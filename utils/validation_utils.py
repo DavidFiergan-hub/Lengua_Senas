@@ -1,10 +1,10 @@
 """
-Utilidades de validación para SignBridge AI.
+Utilidades de validación para Signify.
 
 Proporciona funciones para validar dependencias del sistema, estructura del proyecto,
 configuración de audio y integridad de datos.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 
@@ -594,7 +594,7 @@ def _generate_recommendations(report: SystemValidationReport) -> List[str]:
     
     if report.overall_status == "passed":
         recommendations.append("✅ Todas las validaciones pasaron correctamente.")
-        recommendations.append("El sistema está listo para ejecutar SignBridge AI.")
+        recommendations.append("El sistema está listo para ejecutar Signify.")
     
     # Recomendaciones generales
     recommendations.append("\n📋 Recomendaciones generales:")

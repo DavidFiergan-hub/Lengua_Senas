@@ -4,7 +4,7 @@ Utilidades para manejo de archivos y directorios.
 Proporciona funciones para gestión de archivos, directorios temporales,
 limpieza de archivos y operaciones de respaldo.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 
@@ -83,7 +83,7 @@ def get_data_directory() -> Path:
 
 def get_temp_directory() -> Path:
     """
-    Obtiene un directorio temporal específico para SignBridge AI.
+    Obtiene un directorio temporal específico para Signify.
     
     Returns:
         Path: Directorio temporal, creado si no existe

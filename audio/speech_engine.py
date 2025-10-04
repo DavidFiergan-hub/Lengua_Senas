@@ -4,7 +4,7 @@ Motor de Síntesis de Voz para Señas Ecuatorianas
 Integra funcionalidades de texto a voz y reconocimiento de voz usando
 gTTS para síntesis y Whisper para reconocimiento de voz.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 

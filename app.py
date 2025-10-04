@@ -1,12 +1,10 @@
-"""
-SignBridge AI - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
+"""Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
 
 Aplicación web profesional para consulta y aprendizaje de señas ecuatorianas.
 Desarrollado con Streamlit para una interfaz moderna y accesible.
 
-Autor: SignBridge AI Team
-Versión: 2.0.0
-"""
+Autor: Signify Team
+Versión: 2.0.0"""
 
 import threading
 import time
@@ -22,7 +20,7 @@ from core.sign_processor import SearchResult, get_processor
 from database.signs_database import SignEntry, SignsDatabase
 
 # Constantes de configuración
-APP_TITLE = "SignBridge AI"
+APP_TITLE = "Signify"
 APP_ICON = "🤟"
 APP_DESCRIPTION = "Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano"
 
@@ -774,7 +772,7 @@ def render_footer() -> None:
     """Renderiza el pie de página de la aplicación."""
     footer_html = """
     <div style="text-align: center; margin-top: 3rem; padding: 2rem; color: var(--text-secondary);">
-        <p>SignBridge AI - Sistema de Consulta de Lenguaje de Señas Ecuatoriano</p>
+        <p>Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano</p>
         <p>Desarrollado con ❤️ para la comunidad sorda ecuatoriana</p>
     </div>
     """

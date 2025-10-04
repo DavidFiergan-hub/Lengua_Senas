@@ -4,7 +4,7 @@ Procesador Principal de Señas
 Integra la base de datos, reconocimiento de voz y síntesis de voz
 para proporcionar una interfaz unificada de procesamiento de señas.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 

@@ -4,7 +4,7 @@ Módulo de Base de Datos para Señas Ecuatorianas.
 Maneja la carga, búsqueda y gestión de señas desde el archivo CSV.
 Proporciona funcionalidades de búsqueda exacta, difusa y por categorías.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 

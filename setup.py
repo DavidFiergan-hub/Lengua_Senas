@@ -1,5 +1,5 @@
 """
-Setup script para SignBridge AI
+Setup script para Signify
 """
 
 from setuptools import setup, find_packages
@@ -19,7 +19,7 @@ if requirements_file.exists():
 setup(
     name="signbridge-ai",
     version="2.0.0",
-    author="SignBridge AI Team",
+    author="Signify Team",
     author_email="contact@signbridge.ai",
     description="Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano",
     long_description=long_description,

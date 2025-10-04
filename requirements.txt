@@ -1,4 +1,4 @@
-# SignBridge AI - Dependencias del Sistema
+# Signify - Dependencias del Sistema
 # =====================================
 
 # Framework principal

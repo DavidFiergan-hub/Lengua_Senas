@@ -1,8 +1,8 @@
-# 🤟 SignBridge AI
+# 🤟 Signify
 
 **Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano**
 
-SignBridge AI es una aplicación web moderna desarrollada en Python con Streamlit que permite consultar, buscar y aprender el lenguaje de señas ecuatoriano. El sistema incluye funcionalidades avanzadas de síntesis de voz, reconocimiento por voz y una interfaz intuitiva diseñada para facilitar el acceso a la información sobre señas.
+Signify es una aplicación web moderna desarrollada en Python con Streamlit que permite consultar, buscar y aprender el lenguaje de señas ecuatoriano. El sistema incluye funcionalidades avanzadas de síntesis de voz, reconocimiento por voz y una interfaz intuitiva diseñada para facilitar el acceso a la información sobre señas.
 
 ## 📚 Contexto Académico
 
@@ -22,7 +22,7 @@ Este proyecto fue desarrollado como parte del **Samsung Innovation Hackathon**, 
 ## 🏗️ Estructura del Proyecto
 
 ```
-SignBridge AI/
+Signify/
 ├── .venv/                      # Entorno virtual de Python
 ├── app.py                      # Aplicación principal de Streamlit
 ├── requirements.txt            # Dependencias del proyecto
@@ -407,7 +407,7 @@ Este proyecto fue desarrollado como parte del **Samsung Innovation Hackathon** c
 ## 📞 Contacto y Soporte
 
 ### Información del Proyecto
-- **Nombre**: SignBridge AI - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
+- **Nombre**: Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
 - **Versión**: 2.0.0
 - **Estado**: Proyecto académico activo
 - **Contexto**: Samsung Innovation Hackathon
@@ -449,7 +449,7 @@ Este proyecto nace de la necesidad de crear puentes de comunicación entre la co
 
 ---
 
-**SignBridge AI** - Conectando mundos a través del lenguaje de señas 🤟
+**Signify** - Conectando mundos a través del lenguaje de señas 🤟
 
 *Desarrollado con ❤️ para el Samsung Innovation Hackathon*  
 *Tecnologías: Python • Streamlit • Whisper AI • gTTS • Machine Learning*

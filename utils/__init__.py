@@ -1,10 +1,10 @@
 """
-Módulo de utilidades para SignBridge AI.
+Módulo de utilidades para Signify.
 
 Proporciona funciones auxiliares para manejo de archivos, configuración,
 validación del sistema y otras utilidades comunes.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 
@@ -138,9 +138,9 @@ def get_module_info() -> dict:
         dict: Información del módulo
     """
     return {
-        "name": "SignBridge AI Utils",
+        "name": "Signify Utils",
         "version": __version__,
-        "description": "Módulo de utilidades para SignBridge AI",
+        "description": "Módulo de utilidades para Signify",
         "modules": {
             "file_utils": "Utilidades de manejo de archivos y directorios",
             "config_utils": "Utilidades de configuración y parámetros",

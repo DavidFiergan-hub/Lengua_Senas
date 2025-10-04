@@ -2,9 +2,9 @@
 Utilidades para manejo de configuración del sistema.
 
 Proporciona clases de configuración y funciones para cargar, guardar
-y gestionar la configuración de la aplicación SignBridge AI.
+y gestionar la configuración de la aplicación Signify.
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 

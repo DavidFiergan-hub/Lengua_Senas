@@ -1,5 +1,4 @@
-"""
-SignBridge AI - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
+"""Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
 
 Un sistema profesional y modular para la consulta, búsqueda y aprendizaje
 del lenguaje de señas ecuatoriano con funcionalidades de síntesis de voz
@@ -11,12 +10,12 @@ Módulos principales:
 - core: Lógica de procesamiento principal
 - utils: Utilidades y herramientas auxiliares
 
-Autor: SignBridge AI Team
+Autor: Signify Team
 Versión: 2.0.0
 """
 
 __version__ = "2.0.0"
-__author__ = "SignBridge AI Team"
+__author__ = "Signify Team"
 __description__ = "Sistema de Consulta de Lenguaje de Señas Ecuatoriano"
 
 # Importaciones principales para facilitar el uso del paquete
