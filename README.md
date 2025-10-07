@@ -1,8 +1,8 @@
 # 🤟 Signify
 
-**Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano**
+**Sistema Profesional de Consulta de Lengua de Señas Ecuatoriano**
 
-Signify es una aplicación web moderna desarrollada en Python con Streamlit que permite consultar, buscar y aprender el lenguaje de señas ecuatoriano. El sistema incluye funcionalidades avanzadas de síntesis de voz, reconocimiento por voz y una interfaz intuitiva diseñada para facilitar el acceso a la información sobre señas.
+Signify es una aplicación web moderna desarrollada en Python con Streamlit que permite consultar, buscar y aprender la lengua de señas ecuatoriana. El sistema incluye funcionalidades avanzadas de síntesis de voz, reconocimiento por voz y una interfaz intuitiva diseñada para facilitar el acceso a la información sobre señas.
 
 ## 📚 Contexto Académico
 
@@ -448,7 +448,7 @@ Este proyecto nace de la necesidad de crear puentes de comunicación entre la co
 
 ---
 
-**Signify** - Conectando mundos a través del lenguaje de señas 🤟
+**Signify** - Conectando mundos a través de la lengua de señas 🤟
 
 *Desarrollado con ❤️ para el Samsung Innovation Hackathon*  
 *Tecnologías: Python • Streamlit • Whisper AI • gTTS • Machine Learning*
