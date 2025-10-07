@@ -89,7 +89,7 @@ Signify/
 # 1. Clonar o descargar el proyecto
 # Opción A: Con Git
 git clone [URL_DEL_REPOSITORIO]
-cd Señas_Samsung
+cd Lengua_Senas
 
 # Opción B: Descargar ZIP y extraer
 # Navegar al directorio extraído
@@ -121,7 +121,7 @@ streamlit run app.py
 
 ```bash
 # 1. Navegar al directorio del proyecto
-cd ruta/al/proyecto/Señas_Samsung
+cd ruta/al/proyecto/Lengua_Senas
 
 # 2. Activar el entorno virtual
 # En Windows:
@@ -413,7 +413,6 @@ Este proyecto fue desarrollado como parte del **Samsung Innovation Hackathon** c
 - **Contexto**: Samsung Innovation Hackathon
 
 ### Ubicación del Proyecto
-- **Directorio**: `C:\Users\migue\OneDrive\Documents\Señas_Samsung`
 - **Aplicación principal**: `app.py`
 - **Base de datos**: `señas_ecuatorianas.csv`
 
