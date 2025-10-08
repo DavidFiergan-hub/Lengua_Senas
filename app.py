@@ -1,4 +1,4 @@
-"""Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
+"""Signify - Sistema de Consulta de Lengua de Señas Ecuatoriano
 
 Aplicación web profesional para consulta y aprendizaje de señas ecuatorianas.
 Desarrollado con Streamlit para una interfaz moderna y accesible.
@@ -15,6 +15,7 @@ import pandas as pd
 import streamlit as st
 
 # Importar módulos del proyecto
+from analysis.comparative_analysis import get_comparative_analyzer
 from audio.speech_engine import get_speech_engine, get_voice_recognition
 from core.sign_processor import SearchResult, get_processor
 from database.signs_database import SignEntry, SignsDatabase
@@ -22,9 +23,9 @@ from database.signs_database import SignEntry, SignsDatabase
 # Constantes de configuración
 APP_TITLE = "Signify"
 APP_ICON = "🤟"
-APP_DESCRIPTION = "Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano"
+APP_DESCRIPTION = "Sistema Profesional de Consulta de Lengua de Señas Ecuatoriano"
 
-# CSS Variables - Tema profesional
+# CSS Variables - Tema profesional optimizado
 CSS_VARIABLES = """
     :root {
         --primary-color: #2E86AB;
@@ -34,10 +35,17 @@ CSS_VARIABLES = """
         --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         --card-background: rgba(255, 255, 255, 0.95);
         --text-primary: #2c3e50;
-        --text-secondary: #7f8c8d;
+        --text-secondary: #2c3e50;
+        --text-dark: #1a365d;
+        --text-black: #000000;
+        --background-white: #ffffff;
         --border-radius: 12px;
         --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.1);
         --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.15);
+        --transition-smooth: all 0.3s ease;
+        --gradient-primary: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #ff6b35 100%);
+        --gradient-background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
     }
 """
 
@@ -79,54 +87,33 @@ def load_custom_css() -> None:
         border: 1px solid rgba(255, 255, 255, 0.2);
     }}
     
-    /* Estilos generales para mejorar la visibilidad del texto */
-    .stApp, .stApp * {{
-        color: #2c3e50 !important;
+    /* Estilos generales para texto - Consolidado */
+    .stApp, .stApp *, p, span, div, label, .stMarkdown {{
+        color: var(--text-primary) !important;
+        font-weight: 500 !important;
     }}
     
-    /* Asegurar que todo el texto sea visible */
-    p, span, div, label, .stMarkdown {{
-        color: #2c3e50 !important;
-    }}
-    
-    /* Título principal */
-    .main-title {{
-        text-align: center;
-        color: #1a365d !important;
-        font-size: 3rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }}
-    
-    /* Mejora de contraste para h1 y h2 */
-    h1, .main-title {{
-        color: #1a365d !important;
+    /* Títulos principales - Consolidado */
+    h1, .main-title, .stApp h1 {{
+        color: var(--text-dark) !important;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
         font-weight: 700 !important;
         background: none !important;
-        -webkit-text-fill-color: #1a365d !important;
+        -webkit-text-fill-color: var(--text-dark) !important;
     }}
     
-    h2 {{
-        color: #1a365d !important;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
-        font-weight: 600 !important;
+    .main-title {{
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
     }}
     
-    /* Estilos específicos para títulos en tarjetas */
-    .feature-card h2 {{
-        color: #1a365d !important;
+    /* Títulos secundarios - Consolidado */
+    h2, .feature-card h2 {{
+        color: var(--text-dark) !important;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
         font-weight: 600 !important;
         margin-bottom: 1rem !important;
-    }}
-    
-    /* Forzar color en todos los elementos h1 de Streamlit */
-    .stApp h1 {{
-        color: #1a365d !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
-        font-weight: 700 !important;
     }}
     
     .subtitle {{
@@ -155,14 +142,14 @@ def load_custom_css() -> None:
     
     /* Botones personalizados */
     .stButton > button {{
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        background: var(--gradient-primary);
         color: white;
         border: none;
         border-radius: var(--border-radius);
         padding: 0.75rem 2rem;
         font-weight: 600;
         font-size: 1rem;
-        transition: all 0.3s ease;
+        transition: var(--transition-smooth);
         box-shadow: var(--shadow-soft);
         width: 100%;
     }}
@@ -178,28 +165,367 @@ def load_custom_css() -> None:
         backdrop-filter: blur(10px);
     }}
     
-    /* Inputs personalizados */
+    /* Inputs personalizados - Optimizado */
     .stTextInput > div > div > input {{
+        background-color: var(--background-white) !important;
+        color: var(--text-black) !important;
         border-radius: var(--border-radius);
         border: 2px solid #e1e8ed;
         padding: 0.75rem;
         font-size: 1rem;
-        transition: all 0.3s ease;
+        transition: var(--transition-smooth);
     }}
     
     .stTextInput > div > div > input:focus {{
+        background-color: var(--background-white) !important;
+        color: var(--text-black) !important;
         border-color: var(--primary-color);
         box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.1);
     }}
     
-    /* Métricas personalizadas */
-    .metric-card {{
-        background: var(--card-background);
+    .stTextInput > div > div > input::placeholder {{
+        color: var(--text-black) !important;
+        opacity: 0.7;
+    }}
+    
+    /* Selectbox - Fondo claro y legible, integrado con el tema */
+    .stSelectbox > div > div > div {{
+        background: var(--card-background) !important;
+        color: var(--text-dark) !important;
+        border: 1.5px solid rgba(102, 126, 234, 0.35) !important;
+        border-radius: var(--border-radius) !important;
+        box-shadow: var(--shadow-soft) !important;
+        backdrop-filter: blur(8px) !important;
+        transition: var(--transition-smooth) !important;
+        outline: none !important;
+    }}
+    
+    .stSelectbox > div > div > div:hover {{
+        background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(245, 247, 252, 1) 100%) !important;
+        box-shadow: var(--shadow-hover) !important;
+        transform: translateY(-1px) !important;
+        border-color: rgba(118, 75, 162, 0.55) !important;
+    }}
+    
+    .stSelectbox > div > div > div > div {{
+        background: transparent !important;
+        color: var(--text-dark) !important;
+        font-weight: 600 !important;
+    }}
+    
+    /* Opciones del selectbox - mejoradas para legibilidad */
+    .stSelectbox > div > div > div > div > div {{
+        background: transparent !important;
+        color: var(--text-primary) !important;
+        border-radius: 8px !important;
+        margin: 2px 0 !important;
+        padding: 10px 14px !important;
+        transition: all 0.2s ease !important;
+        border: 1px solid rgba(102, 126, 234, 0.15) !important;
+        backdrop-filter: blur(6px) !important;
+    }}
+    
+    .stSelectbox > div > div > div > div > div:hover {{
+        background: var(--gradient-primary) !important;
+        color: white !important;
+        transform: translateX(4px) !important;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.35) !important;
+        border-color: rgba(118, 75, 162, 0.45) !important;
+    }}
+    
+    /* Dropdown del selectbox - fondo claro consistente */
+    .stSelectbox [data-baseweb="select"] > div {{
+        background: var(--card-background) !important;
+        color: var(--text-primary) !important;
+        border-radius: var(--border-radius) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 1.5px solid rgba(102, 126, 234, 0.35) !important;
+        box-shadow: var(--shadow-soft) !important;
+    }}
+    
+    /* Texto seleccionado en selectbox - Optimizado */
+    .stSelectbox [data-baseweb="select"] > div > div {{
+        color: var(--text-primary) !important;
+        font-weight: 700 !important;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+    }}
+    
+    /* Flecha del dropdown con mejor visibilidad */
+    .stSelectbox [data-baseweb="select"] svg {{
+        fill: var(--primary-color) !important;
+        transition: var(--transition-smooth) !important;
+    }}
+    
+    .stSelectbox [data-baseweb="select"]:hover svg {{
+        fill: var(--secondary-color) !important;
+        transform: scale(1.1) !important;
+    }}
+    
+    /* Lista desplegable con sombra y bordes elegantes */
+    .stSelectbox [data-baseweb="popover"] {{
+        border-radius: var(--border-radius) !important;
+        box-shadow: var(--shadow-hover) !important;
+        border: 1.5px solid rgba(102, 126, 234, 0.35) !important;
+        backdrop-filter: blur(12px) !important;
+        background: var(--card-background) !important;
+    }}
+    
+    /* Forzar fondo claro dentro del contenedor del menú */
+    .stSelectbox [data-baseweb="popover"] > div,
+    .stSelectbox [data-baseweb="popover"] ul[role="listbox"],
+    .stSelectbox [data-baseweb="listbox"],
+    .stSelectbox [data-baseweb="menu"],
+    .stSelectbox [role="listbox"] {{
+        background: var(--card-background) !important;
+    }}
+    
+    /* Opciones individuales en el dropdown - Optimizado */
+    .stSelectbox [role="option"] {{
+        background: transparent !important;
+        color: var(--text-primary) !important;
+        border-radius: 6px !important;
+        margin: 2px 4px !important;
+        padding: 10px 12px !important;
+        transition: all 0.2s ease !important;
+        font-weight: 500 !important;
+    }}
+    
+    /* Contraste en fondos oscuros: si el menú conserva fondo negro, usar texto blanco */
+    .stSelectbox [data-baseweb="popover"][style*="rgb(0, 0, 0)"] [role="option"],
+    .stSelectbox [data-baseweb="popover"][style*="#000"] [role="option"],
+    .stSelectbox [data-baseweb="listbox"][style*="rgb(0, 0, 0)"] [role="option"],
+    .stSelectbox [data-baseweb="menu"][style*="rgb(0, 0, 0)"] [role="option"] {{
+        color: #ffffff !important;
+    }}
+    
+    /* Asegurar texto blanco en opción activa/seleccionada para visibilidad */
+    .stSelectbox [role="option"][aria-selected="true"],
+    .stSelectbox [role="option"][data-selected="true"] {{
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }}
+    
+    .stSelectbox [role="option"]:hover {{
+        background: var(--gradient-primary) !important;
+        color: white !important;
+        transform: translateX(2px) !important;
+        box-shadow: 0 2px 8px rgba(46, 134, 171, 0.3) !important;
+    }}
+    
+    /* Opción seleccionada - Optimizado */
+    .stSelectbox [aria-selected="true"] {{
+        background: var(--gradient-accent) !important;
+        color: white !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 8px rgba(241, 143, 1, 0.4) !important;
+    }}
+    
+    /* Elementos SVG - Optimizado */
+    svg {{
+        background-color: var(--background-white) !important;
+    }}
+    
+    /* Divs principales - Optimizado */
+    .stApp > div, .main > div, .block-container {{
+        background-color: var(--background-white) !important;
+    }}
+    
+    /* Inputs de diferentes tipos - Optimizado */
+    input[type="text"], input[type="number"], input[type="email"], input[type="password"] {{
+        background-color: var(--background-white) !important;
+        color: var(--text-primary) !important;
+        border: 2px solid #e1e8ed !important;
+    }}
+    
+    /* Mejoras para gráficos y visualizaciones - Optimizado */
+    .stPlotlyChart {{
+        background-color: var(--background-white) !important;
         border-radius: var(--border-radius);
-        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        padding: 1.5rem !important;
+        margin: 1rem 0;
+        border: 2px solid var(--text-black) !important;
+    }}
+    
+    /* Contenedor de gráficos - Optimizado */
+    .js-plotly-plot {{
+        background-color: var(--background-white) !important;
+        border: 2px solid var(--text-black) !important;
+        border-radius: var(--border-radius);
+    }}
+    
+    /* SVG principal - Optimizado */
+    .plotly svg {{
+        background-color: var(--background-white) !important;
+    }}
+    
+    /* Ejes y texto de gráficos - Optimizado */
+    .plotly .xtick text, .plotly .ytick text,
+    .stPlotlyChart .xtick text, .stPlotlyChart .ytick text,
+    .plotly text[class*="xtick"], .plotly text[class*="ytick"] {{
+        fill: var(--text-black) !important;
+        color: var(--text-black) !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
+        font-family: 'Arial', sans-serif !important;
+    }}
+    
+    /* Títulos de ejes - Optimizado */
+    .plotly .xtitle, .plotly .ytitle {{
+        fill: var(--text-black) !important;
+        color: var(--text-black) !important;
+        font-weight: 800 !important;
+        font-size: 16px !important;
+        font-family: 'Arial', sans-serif !important;
+    }}
+    
+    /* Líneas de ejes - Optimizado */
+    .plotly .xaxis line, .plotly .yaxis line {{
+        stroke: var(--text-black) !important;
+        stroke-width: 2px !important;
+    }}
+    
+    /* Barras de gráfico - Optimizado */
+    .stBarChart > div {{
+        background-color: var(--text-primary) !important;
+        border: 3px solid #34495e !important;
+        border-radius: var(--border-radius);
+        padding: 1.5rem !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    }}
+    
+    /* Texto en gráficos de barras - Optimizado */
+    .stBarChart text {{
+        fill: var(--background-white) !important;
+        font-weight: 600 !important;
+    }}
+    
+    /* Ejes de gráficos de barras - Optimizado */
+    .stBarChart .tick text {{
+        fill: var(--background-white) !important;
+        font-weight: 500 !important;
+    }}
+    
+    /* Líneas de ejes - Optimizado */
+    .stBarChart .domain {{
+        stroke: var(--background-white) !important;
+        stroke-width: 2px !important;
+    }}
+    
+    /* Líneas de cuadrícula - Optimizado */
+    .plotly .gridlayer .crisp {{
+        stroke: var(--text-black) !important;
+        stroke-width: 2px !important;
+        opacity: 1 !important;
+    }}
+    
+    /* Cuadrícula principal - Optimizado */
+    .plotly .xgrid, .plotly .ygrid {{
+        stroke: var(--text-black) !important;
+        stroke-width: 2px !important;
+        opacity: 1 !important;
+    }}
+    
+    /* Leyendas de gráficos - Optimizado */
+    .plotly .legend {{
+        background-color: var(--background-white) !important;
+        border: 2px solid var(--text-black) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    }}
+    
+    /* Texto de leyendas - Optimizado */
+    .plotly .legend text {{
+        fill: var(--text-black) !important;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+    }}
+    
+    /* Tooltips - Optimizado */
+    .plotly .hovertext {{
+        background-color: var(--background-white) !important;
+        color: var(--text-black) !important;
+        border: 2px solid var(--text-black) !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    }}
+    
+    /* Elementos de barras - Optimizado */
+    .plotly .bars path {{
+        stroke: var(--text-black) !important;
+        stroke-width: 1px !important;
+    }}
+    
+    /* Texto en barras - Optimizado */
+    .plotly .bartext {{
+        fill: var(--text-black) !important;
+        font-weight: 600 !important;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8) !important;
+    }}
+    
+    /* Textarea - Optimizado */
+    textarea {{
+        background-color: var(--background-white) !important;
+        color: var(--text-primary) !important;
+        border: 2px solid #e1e8ed !important;
+    }}
+    
+    /* Contenedores de métricas - Optimizado */
+    .metric-card {{
+        background: var(--background-white) !important;
+        border-radius: var(--border-radius);
+        padding: 1.5rem !important;
         text-align: center;
-        box-shadow: var(--shadow-soft);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
         margin: 0.5rem 0;
+        border: 2px solid var(--text-black) !important;
+    }}
+    
+    /* Separación visual para gráficos - Optimizado */
+    .stPlotlyChart::before {{
+        content: "";
+        display: block;
+        height: 3px;
+        background: linear-gradient(90deg, var(--text-black), #666666, var(--text-black));
+        margin-bottom: 1rem;
+        border-radius: 2px;
+    }}
+    
+    /* Elementos de datos - Optimizado */
+    .plotly .trace {{
+        stroke-width: 2px !important;
+    }}
+    
+    /* Marcadores de puntos - Optimizado */
+    .plotly .scatterpts .point {{
+        stroke: var(--text-black) !important;
+        stroke-width: 2px !important;
+    }}
+    
+    /* Separadores visuales - Optimizado */
+    .stBarChart::after {{
+        content: "";
+        display: block;
+        height: 2px;
+        background: var(--text-black);
+        margin-top: 1rem;
+        opacity: 0.3;
+    }}
+    
+    /* Área de fondo de gráficos - Optimizado */
+    .plotly .subplot {{
+        background-color: var(--background-white) !important;
+        background-image: 
+            linear-gradient(45deg, transparent 49%, rgba(0,0,0,0.02) 50%, transparent 51%),
+            linear-gradient(-45deg, transparent 49%, rgba(0,0,0,0.02) 50%, transparent 51%);
+        background-size: 20px 20px;
+    }}
+    
+    /* Bordes adicionales para elementos SVG - Optimizado */
+    .plotly .main-svg {{
+        border: 1px solid var(--text-black) !important;
+        border-radius: 4px !important;
     }}
     
     /* Resultados de búsqueda */
@@ -332,7 +658,7 @@ def render_header() -> None:
     header_html = f"""
     <div class="main-container fade-in-up">
         <h1 class="main-title">{APP_ICON} {APP_TITLE}</h1>
-        <p class="subtitle">{APP_DESCRIPTION}</p>
+        <p class="subtitle">Traductor de Lengua de Señas</p>
     </div>
     """
     st.markdown(header_html, unsafe_allow_html=True)
@@ -399,7 +725,17 @@ def _render_statistics() -> None:
 def _render_search_history() -> None:
     """Renderiza el historial de búsquedas recientes."""
     if st.session_state.search_history:
-        st.markdown("#### 📝 Historial Reciente")
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.markdown("#### 📝 Historial Reciente")
+        with col2:
+            if st.button("🗑️ Limpiar", key="clear_history_btn", help="Eliminar todo el historial"):
+                st.session_state.search_history.clear()
+                if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                    st.session_state.processor.clear_search_history()
+                st.success("Historial eliminado")
+                st.rerun()
+        
         recent_searches = st.session_state.search_history[-5:]
         
         for i, search in enumerate(recent_searches):
@@ -407,32 +743,64 @@ def _render_search_history() -> None:
                 perform_search(search)
 
 
-def perform_search(query: str, search_type: str = "exact") -> List[SearchResult]:
+def perform_search(query: str, search_type: str = "exact", language: str = "ecuatoriano") -> SearchResult:
     """
     Realiza una búsqueda y actualiza el estado de la sesión.
     
     Args:
         query: Término de búsqueda
         search_type: Tipo de búsqueda ('exact', 'fuzzy', 'auto')
+        language: Idioma en el que buscar
     
     Returns:
-        Lista de resultados de búsqueda
+        SearchResult con los resultados de búsqueda
     """
     if not query.strip():
-        return []
+        return SearchResult(query="", found=False)
     
     processor = st.session_state.processor
     
-    # Realizar búsqueda según el tipo
-    if search_type == "exact":
-        # Búsqueda exacta solamente
-        results = processor.search_sign(query, include_similar=False)
-    elif search_type == "fuzzy":
-        # Búsqueda con similares
-        results = processor.search_sign(query, include_similar=True)
+    # Verificar si es una palabra con versiones Costa/Sierra
+    dual_version_words = ["mayo", "octubre", "noviembre"]
+    query_lower = query.lower().strip()
+    
+    if query_lower in dual_version_words and language == "ecuatoriano":
+        # Buscar ambas versiones (Costa y Sierra)
+        costa_query = f"{query} (Costa)"
+        sierra_query = f"{query} (Sierra)"
+        
+        costa_result = processor.search_sign(costa_query, include_similar=False, language=language)
+        sierra_result = processor.search_sign(sierra_query, include_similar=False, language=language)
+        
+        # Crear un resultado combinado
+        combined_result = SearchResult(query=query, found=False)
+        
+        if costa_result.found or sierra_result.found:
+            combined_result.found = True
+            # Agregar ambas versiones como coincidencias similares para mostrarlas
+            if costa_result.found:
+                combined_result.similar_matches.append((costa_result.exact_match, 1.0))
+            if sierra_result.found:
+                combined_result.similar_matches.append((sierra_result.exact_match, 1.0))
+            
+            # Usar la primera versión encontrada como coincidencia exacta
+            if costa_result.found:
+                combined_result.exact_match = costa_result.exact_match
+            elif sierra_result.found:
+                combined_result.exact_match = sierra_result.exact_match
+        
+        results = combined_result
     else:
-        # Búsqueda automática: incluye similares por defecto
-        results = processor.search_sign(query, include_similar=True)
+        # Búsqueda normal
+        if search_type == "exact":
+            # Búsqueda exacta solamente
+            results = processor.search_sign(query, include_similar=False, language=language)
+        elif search_type == "fuzzy":
+            # Búsqueda con similares
+            results = processor.search_sign(query, include_similar=True, language=language)
+        else:
+            # Búsqueda automática: incluye similares por defecto
+            results = processor.search_sign(query, include_similar=True, language=language)
     
     # Actualizar historial si es una nueva búsqueda
     if query not in st.session_state.search_history:
@@ -453,10 +821,11 @@ def render_search_interface() -> None:
     """, unsafe_allow_html=True)
     
     # Pestañas de búsqueda
-    tab1, tab2, tab3 = st.tabs([
+    tab1, tab2, tab3, tab4 = st.tabs([
         "🎯 Búsqueda Exacta", 
         "🔄 Búsqueda Inteligente", 
-        "🎤 Búsqueda por Voz"
+        "🎤 Búsqueda por Voz",
+        "📊 Análisis Comparativo"
     ])
     
     with tab1:
@@ -467,56 +836,146 @@ def render_search_interface() -> None:
     
     with tab3:
         _render_voice_search_tab()
+    
+    with tab4:
+        # Solo renderizar si el procesador está inicializado
+        if hasattr(st.session_state, 'processor') and st.session_state.processor:
+            _render_comparative_analysis_tab()
+        else:
+            st.error("Sistema no inicializado correctamente. Por favor, recarga la página.")
 
 
 def _render_exact_search_tab() -> None:
     """Renderiza la pestaña de búsqueda exacta."""
     st.markdown("Busca una seña específica por su nombre exacto:")
-    query = st.text_input(
-        "Ingresa la palabra a buscar:",
-        placeholder="Ejemplo: hola, gracias, por favor...",
-        key="exact_search"
-    )
     
-    col1, col2 = st.columns([3, 1])
+    # Selector de idioma
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        query = st.text_input(
+            "Ingresa la palabra a buscar:",
+            placeholder="Ejemplo: hola, gracias, por favor...",
+            key="exact_search"
+        )
+    
     with col2:
+        language = st.selectbox(
+            "Idioma de señas:",
+            options=["ecuatoriano", "chileno", "mexicano"],
+            index=0,
+            key="language_selector"
+        )
+    
+    col3, col4, col5, col6 = st.columns([1, 1, 1, 1])
+    with col3:
         if st.button("🔍 Buscar", key="exact_btn"):
             if query:
-                results = perform_search(query, "exact")
-                _play_search_results_audio(results)
+                results = perform_search(query, "exact", language)
+                _play_search_results_audio(results, language)
+    
+    with col4:
+        if st.button("🧹 Limpiar", key="exact_clear_btn"):
+            # Limpiar resultados y mostrar mensaje
+            st.session_state.current_results = None
+            st.success("Búsqueda limpiada")
+            st.rerun()
+    
+    with col5:
+        if st.button("⏹️ Detener Audio", key="exact_stop_btn"):
+            if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                try:
+                    st.session_state.processor.speech_engine.stop_speech()
+                    st.info("Audio detenido")
+                except Exception as e:
+                    print(f"Error deteniendo audio: {e}")
 
 
 def _render_fuzzy_search_tab() -> None:
     """Renderiza la pestaña de búsqueda inteligente."""
-    st.markdown("Búsqueda inteligente que encuentra coincidencias aproximadas:")
-    query = st.text_input(
-        "Ingresa la palabra a buscar:",
-        placeholder="Ejemplo: ola, grasias, porfavor...",
-        key="fuzzy_search"
-    )
+    st.markdown("Encuentra señas similares aunque no escribas la palabra exacta:")
     
-    col1, col2 = st.columns([3, 1])
+    # Selector de idioma
+    col1, col2 = st.columns([2, 1])
     with col2:
+        language = st.selectbox(
+            "Idioma:",
+            options=["ecuatoriano", "chileno", "mexicano"],
+            index=0,
+            key="fuzzy_language"
+        )
+    
+    with col1:
+        query = st.text_input(
+            "Buscar seña (inteligente):",
+            placeholder="Ej: ola, grcias, adios...",
+            key="fuzzy_query"
+        )
+    
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
+    with col1:
         if st.button("🔍 Buscar", key="fuzzy_btn"):
             if query:
-                results = perform_search(query, "fuzzy")
-                _play_search_results_audio(results)
+                results = perform_search(query, "fuzzy", language)
+                _play_search_results_audio(results, language)
+    
+    with col2:
+        if st.button("🧹 Limpiar", key="fuzzy_clear_btn"):
+            # Limpiar resultados y mostrar mensaje
+            st.session_state.current_results = None
+            st.success("Búsqueda limpiada")
+            st.rerun()
+    
+    with col3:
+        if st.button("⏹️ Detener Audio", key="fuzzy_stop_btn"):
+            if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                try:
+                    st.session_state.processor.speech_engine.stop_speech()
+                    st.info("Audio detenido")
+                except Exception as e:
+                    print(f"Error deteniendo audio: {e}")
 
 
 def _render_voice_search_tab() -> None:
     """Renderiza la pestaña de búsqueda por voz."""
     st.markdown("Usa tu voz para buscar señas:")
-    col1, col2 = st.columns([3, 1])
+    
+    # Selector de idioma
+    col1, col2 = st.columns([2, 1])
+    with col2:
+        language = st.selectbox(
+            "Idioma:",
+            options=["ecuatoriano", "chileno", "mexicano"],
+            index=0,
+            key="voice_language"
+        )
+    
+    col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
     
     with col1:
         st.info("Haz clic en el botón y habla claramente la palabra que deseas buscar.")
     
     with col2:
         if st.button("🎤 Escuchar", key="voice_btn"):
-            _handle_voice_search()
+            _handle_voice_search(language)
+    
+    with col3:
+        if st.button("🧹 Limpiar", key="voice_clear_btn"):
+            # Limpiar resultados de búsqueda por voz
+            st.session_state.current_results = None
+            st.success("Búsqueda limpiada")
+            st.rerun()
+    
+    with col4:
+        if st.button("⏹️ Detener Audio", key="voice_stop_btn"):
+            if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                try:
+                    st.session_state.processor.speech_engine.stop_speech()
+                    st.info("Audio detenido")
+                except Exception as e:
+                    print(f"Error deteniendo audio: {e}")
 
 
-def _handle_voice_search() -> None:
+def _handle_voice_search(language: str = "ecuatoriano") -> None:
     """Maneja la búsqueda por reconocimiento de voz."""
     with st.spinner("Escuchando... Habla ahora"):
         try:
@@ -524,31 +983,37 @@ def _handle_voice_search() -> None:
             recognized_text = voice_engine.record_and_transcribe()
             
             if recognized_text:
-                # Limpiar y normalizar el texto reconocido
-                cleaned_text = recognized_text.strip().lower()
+                # Limpiar y normalizar el texto reconocido (ahora viene mejor procesado)
+                cleaned_text = recognized_text.strip()
                 st.success(f"Reconocido: {recognized_text}")
                 
-                # Intentar primero búsqueda exacta, luego fuzzy
-                results = perform_search(cleaned_text, "exact")
+                # Intentar primero búsqueda exacta
+                results = perform_search(cleaned_text, "exact", language)
                 if not results.found:
-                    # Si no se encuentra exacta, intentar con fuzzy
-                    results = perform_search(cleaned_text, "fuzzy")
+                    # Si no se encuentra exacta, intentar con fuzzy para obtener sugerencias
+                    results = perform_search(cleaned_text, "fuzzy", language)
                     if results.found:
                         st.info(f"Búsqueda aproximada encontrada para: {cleaned_text}")
+                    else:
+                        # Asegurar que se incluyan sugerencias incluso si no hay coincidencias exactas
+                        st.info(f"No se encontraron coincidencias exactas para: {cleaned_text}")
                 
-                _play_search_results_audio(results)
+                # Actualizar los resultados en la sesión para mostrar sugerencias
+                st.session_state.current_results = results
+                _play_search_results_audio(results, language)
             else:
                 st.warning("No se pudo reconocer el audio. Intenta de nuevo.")
         except Exception as e:
             st.error(f"Error en reconocimiento de voz: {str(e)}")
 
 
-def _play_search_results_audio(results: SearchResult) -> None:
+def _play_search_results_audio(results: SearchResult, language: str = "ecuatoriano") -> None:
     """
     Reproduce audio de los resultados de búsqueda en segundo plano.
     
     Args:
         results: Resultado de búsqueda (SearchResult)
+        language: Idioma de la búsqueda
     """
     if not results:
         return
@@ -571,7 +1036,8 @@ def _play_search_results_audio(results: SearchResult) -> None:
                 try:
                     speech_engine.speak_sign_instruction(
                         results.exact_match.word, 
-                        results.exact_match.instructions
+                        results.exact_match.instructions,
+                        language
                     )
                 except Exception as e:
                     print(f"Error reproduciendo audio: {e}")
@@ -584,10 +1050,19 @@ def _play_search_results_audio(results: SearchResult) -> None:
             
             def play_similar_audio():
                 try:
+                    # Mapeo de idiomas a países
+                    language_country_map = {
+                        "ecuatoriano": "Ecuador",
+                        "chileno": "Chile", 
+                        "mexicano": "México"
+                    }
+                    
+                    country = language_country_map.get(language, "Ecuador")
+                    
                     suggestion_text = (
-                        f"No encontré exactamente '{results.query}', "
+                        f"No encontré exactamente '{results.query}' en lengua de señas de {country}, "
                         f"pero encontré '{best_match.word}' que es similar. "
-                        f"{best_match.instructions}"
+                        f"La palabra '{best_match.word}' en lengua de señas de {country} se hace así: {best_match.instructions}"
                     )
                     speech_engine.speak_text(suggestion_text)
                 except Exception as e:
@@ -636,9 +1111,136 @@ def _render_single_result(result: SearchResult, index: int) -> None:
         index: Índice del resultado
     """
     if not result.found:
+        # Mostrar mensaje de no encontrado
         st.warning(f"No se encontraron resultados para '{result.query}'")
+        
+        # Mostrar sugerencias si están disponibles
+        if result.similar_matches:
+            st.info("💡 **Sugerencias de palabras similares:**")
+            
+            # Mostrar hasta 3 sugerencias principales
+            for i, (similar_sign, similarity) in enumerate(result.similar_matches[:3]):
+                suggestion_html = f"""
+                <div class="suggestion-result" style="
+                    background: linear-gradient(45deg, #f8f9fa, #e9ecef); 
+                    border-left: 4px solid var(--accent-color);
+                    padding: 0.8rem; 
+                    margin: 0.5rem 0; 
+                    border-radius: 8px;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                ">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong style="color: var(--primary-color); font-size: 1.1rem;">
+                                🤟 {similar_sign.word}
+                            </strong>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.3rem;">
+                                {similar_sign.instructions[:100]}{'...' if len(similar_sign.instructions) > 100 else ''}
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <span style="
+                                background: var(--accent-color); 
+                                color: white; 
+                                padding: 0.2rem 0.5rem; 
+                                border-radius: 12px; 
+                                font-size: 0.8rem;
+                                font-weight: bold;
+                            ">
+                                {similarity:.0%} similar
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                """
+                st.markdown(suggestion_html, unsafe_allow_html=True)
+                
+                # Botón para usar esta sugerencia
+                if st.button(f"🔍 Buscar '{similar_sign.word}'", key=f"suggestion_{index}_{i}"):
+                    # Realizar nueva búsqueda con la sugerencia
+                    new_results = perform_search(similar_sign.word, "exact")
+                    st.session_state.current_results = new_results
+                    st.rerun()
+        
         return
     
+    # Verificar si es una búsqueda de versiones duales (Costa y Sierra)
+    dual_version_words = ["mayo", "octubre", "noviembre"]
+    query_lower = result.query.lower().strip()
+    
+    if query_lower in dual_version_words and len(result.similar_matches) >= 2:
+        # Mostrar ambas versiones (Costa y Sierra) de manera especial
+        st.markdown(f"""
+        <div class="search-result fade-in-up">
+            <div style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); 
+                        color: white; padding: 1rem; border-radius: var(--border-radius); 
+                        margin-bottom: 1rem; text-align: center; box-shadow: var(--shadow-soft);">
+                <h2 style="margin: 0; font-size: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    🤟 {result.query.title()} - Versiones Regionales
+                </h2>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Mostrar cada versión en su propia tarjeta
+        for i, (version_sign, similarity) in enumerate(result.similar_matches):
+            # Determinar si es Costa o Sierra
+            region = "🏖️ Costa" if "(Costa)" in version_sign.word else "🏔️ Sierra"
+            region_color = "#2E86AB" if "Costa" in version_sign.word else "#A23B72"
+            
+            version_html = f"""
+            <div class="search-result" style="margin: 1rem 0; border-left: 4px solid {region_color};">
+                <div style="background: linear-gradient(45deg, {region_color}, #667eea); 
+                            color: white; padding: 0.8rem; border-radius: var(--border-radius); 
+                            margin-bottom: 1rem; text-align: center; box-shadow: var(--shadow-soft);">
+                    <h3 style="margin: 0; font-size: 1.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                        {region} - {version_sign.word}
+                    </h3>
+                </div>
+                <div class="instructions-box">
+                    <strong>Instrucciones:</strong> {version_sign.instructions}
+                </div>
+                <div style="margin: 1rem 0;">
+                    <span class="category-badge">Categoría: {version_sign.category}</span>
+                </div>
+            </div>
+            """
+            st.markdown(version_html, unsafe_allow_html=True)
+            
+            # Botones para reproducir y detener audio de cada versión
+            if st.session_state.voice_enabled:
+                col1, col2, col3 = st.columns([1, 1, 4])
+                with col1:
+                    if st.button(f"🔊 Reproducir {region}", key=f"speak_version_{index}_{i}"):
+                        # Verificar que el processor esté inicializado
+                        if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                            # Obtener referencia al speech_engine ANTES del threading
+                            speech_engine = st.session_state.processor.speech_engine
+                            
+                            def play_version_instruction():
+                                try:
+                                    speech_engine.speak_sign_instruction(
+                                        version_sign.word, version_sign.instructions
+                                    )
+                                except Exception as e:
+                                    print(f"Error reproduciendo instrucción: {e}")
+                            
+                            threading.Thread(target=play_version_instruction, daemon=True).start()
+                            st.success(f"Reproduciendo versión {region}...")
+                
+                with col2:
+                    if st.button(f"⏹️ Detener", key=f"stop_version_{index}_{i}"):
+                        # Verificar que el processor esté inicializado
+                        if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                            try:
+                                st.session_state.processor.speech_engine.stop_speech()
+                                st.info("Audio detenido")
+                            except Exception as e:
+                                print(f"Error deteniendo audio: {e}")
+        
+        return
+    
+    # Renderizado normal para otros resultados
     # Obtener la mejor coincidencia
     best_match = result.get_best_match()
     if not best_match:
@@ -667,7 +1269,7 @@ def _render_single_result(result: SearchResult, index: int) -> None:
     """
     st.markdown(result_html, unsafe_allow_html=True)
     
-    # Botón para reproducir audio
+    # Botones para reproducir y detener audio
     if st.session_state.voice_enabled:
         col1, col2, col3 = st.columns([1, 1, 4])
         with col1:
@@ -687,6 +1289,16 @@ def _render_single_result(result: SearchResult, index: int) -> None:
                     
                     threading.Thread(target=play_instruction, daemon=True).start()
                     st.success("Reproduciendo...")
+        
+        with col2:
+            if st.button(f"⏹️ Detener", key=f"stop_{index}"):
+                # Verificar que el processor esté inicializado
+                if hasattr(st.session_state, 'processor') and st.session_state.processor:
+                    try:
+                        st.session_state.processor.speech_engine.stop_speech()
+                        st.info("Audio detenido")
+                    except Exception as e:
+                        print(f"Error deteniendo audio: {e}")
 
 
 def render_random_signs() -> None:
@@ -772,11 +1384,88 @@ def render_footer() -> None:
     """Renderiza el pie de página de la aplicación."""
     footer_html = """
     <div style="text-align: center; margin-top: 3rem; padding: 2rem; color: var(--text-secondary);">
-        <p>Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano</p>
-        <p>Desarrollado con ❤️ para la comunidad sorda ecuatoriana</p>
+        <p>Traductor de Lengua de Señas</p>
+        <p>Desarrollado con ❤️ para la comunidad Sorda y Muda</p>
     </div>
     """
     st.markdown(footer_html, unsafe_allow_html=True)
+
+
+def _render_comparative_analysis_tab() -> None:
+    """Renderiza la pestaña de análisis comparativo entre idiomas."""
+    st.markdown("Análisis estadístico comparativo entre diferentes lenguajes de señas:")
+    
+    # Verificar que el procesador esté inicializado
+    if not hasattr(st.session_state, 'processor') or not st.session_state.processor:
+        st.error("Sistema no inicializado correctamente. Por favor, recarga la página.")
+        return
+    
+    # Obtener la base de datos a través del procesador
+    database = st.session_state.processor.database
+    
+    # Obtener el analizador comparativo
+    analyzer = get_comparative_analyzer(database)
+    
+    # Selector de tipo de análisis
+    analysis_type = st.selectbox(
+        "Tipo de análisis:",
+        options=[
+            "Estadísticas Descriptivas",
+            "Palabras Comunes"
+        ],
+        key="analysis_type"
+    )
+    
+    if st.button("🔬 Realizar Análisis", key="run_analysis"):
+        with st.spinner("Realizando análisis..."):
+            try:
+                if analysis_type == "Estadísticas Descriptivas":
+                    # Generar estadísticas descriptivas
+                    stats_table = analyzer.create_statistical_summary_table()
+                    
+                    st.subheader("📊 Estadísticas No Paramétricas por Idioma")
+                    st.write("Análisis estadístico enfocado en la complejidad de las instrucciones de señas:")
+                    
+                    if not stats_table.empty:
+                        st.dataframe(stats_table, use_container_width=True)
+                        
+                        # Mostrar gráfico de barras para cantidad de señas
+                        if 'Cantidad' in stats_table.columns:
+                            st.subheader("📈 Cantidad de Señas Comunes por Idioma")
+                            st.bar_chart(stats_table['Cantidad'])
+                        
+                        # Mostrar comparación de medianas
+                        if 'Mediana' in stats_table.columns:
+                            st.subheader("📊 Comparación de Complejidad (Mediana de longitud)")
+                            st.bar_chart(stats_table['Mediana'])
+                            
+                        # Mostrar análisis de complejidad
+                        if 'Complejidad Promedio' in stats_table.columns:
+                            st.subheader("🎯 Clasificación de Complejidad")
+                            complexity_counts = stats_table['Complejidad Promedio'].value_counts()
+                            st.bar_chart(complexity_counts)
+                    else:
+                        st.info("No hay datos suficientes para generar estadísticas descriptivas.")
+                
+                elif analysis_type == "Palabras Comunes":
+                    # Obtener palabras comunes
+                    common_words = database.get_common_words()
+                    
+                    st.subheader("🔗 Palabras Comunes Entre Idiomas")
+                    st.write(f"Se encontraron **{len(common_words)}** palabras presentes en todos los idiomas:")
+                    
+                    if common_words:
+                        # Mostrar palabras en columnas
+                        cols = st.columns(3)
+                        for i, word in enumerate(common_words):
+                            with cols[i % 3]:
+                                st.write(f"• {word}")
+                    else:
+                        st.info("No se encontraron palabras comunes entre todos los idiomas.")
+                
+            except Exception as e:
+                st.error(f"Error al realizar el análisis: {str(e)}")
+                st.write("Por favor, verifica que la base de datos esté correctamente cargada.")
 
 
 def main() -> None:

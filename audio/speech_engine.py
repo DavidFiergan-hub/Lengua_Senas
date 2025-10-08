@@ -157,37 +157,59 @@ class SpeechEngine:
         except OSError as e:
             print(f"⚠️ No se pudo eliminar archivo temporal: {e}")
     
-    def speak_sign_instruction(self, word: str, instructions: str) -> None:
+    def speak_sign_instruction(self, word: str, instructions: str, language: str = "ecuatoriano") -> None:
         """
-        Reproduce instrucciones de señas de forma estructurada.
+        Reproduce instrucciones de señas de forma estructurada con anuncio del idioma.
         
         Args:
             word: Palabra de la seña
             instructions: Instrucciones de cómo hacer la seña
+            language: Idioma de la seña (ecuatoriano, chileno, mexicano)
         """
         if not word or not instructions:
             return
         
-        instruction_text = f"La seña para '{word}' se hace así: {instructions}"
+        # Mapeo de idiomas a países
+        language_country_map = {
+            "ecuatoriano": "Ecuador",
+            "chileno": "Chile", 
+            "mexicano": "México"
+        }
+        
+        country = language_country_map.get(language, "Ecuador")
+        
+        instruction_text = (
+            f"La palabra '{word}' en lengua de señas de {country} se hace así: {instructions}"
+        )
         self.speak_text(instruction_text)
     
     def speak_search_result(self, word: str, found: bool, 
-                           instructions: Optional[str] = None) -> None:
+                           instructions: Optional[str] = None, language: str = "ecuatoriano") -> None:
         """
-        Reproduce resultados de búsqueda.
+        Reproduce resultados de búsqueda con información del idioma.
         
         Args:
             word: Palabra buscada
             found: Si se encontró la seña
             instructions: Instrucciones de la seña (si se encontró)
+            language: Idioma de la búsqueda
         """
         if not word:
             return
         
+        # Mapeo de idiomas a países
+        language_country_map = {
+            "ecuatoriano": "Ecuador",
+            "chileno": "Chile", 
+            "mexicano": "México"
+        }
+        
+        country = language_country_map.get(language, "Ecuador")
+        
         if found and instructions:
-            result_text = f"Encontré la seña para '{word}': {instructions}"
+            result_text = f"Encontré la seña para '{word}' en lengua de señas de {country}: {instructions}"
         else:
-            result_text = f"No encontré la seña para '{word}'. Intenta con otra palabra."
+            result_text = f"No encontré la seña para '{word}' en lengua de señas de {country}. Intenta con otra palabra."
         
         self.speak_text(result_text)
     
@@ -397,9 +419,26 @@ class VoiceRecognitionEngine:
             
             # Transcribir con Whisper
             result = self.model.transcribe(audio, language="es")
-            transcribed_text = result["text"].lower().strip()
+            transcribed_text = result["text"].strip()
             
+            # Limpiar el texto reconocido para eliminar transformaciones no deseadas
             if transcribed_text:
+                # Remover puntos finales innecesarios
+                if transcribed_text.endswith('.'):
+                    transcribed_text = transcribed_text[:-1]
+                
+                # Remover otros signos de puntuación innecesarios al final
+                transcribed_text = transcribed_text.rstrip('.,!?;:')
+                
+                # Mantener la capitalización original si es una sola palabra
+                words = transcribed_text.split()
+                if len(words) == 1:
+                    # Para una sola palabra, mantener la primera letra en mayúscula si es apropiado
+                    transcribed_text = words[0].capitalize()
+                else:
+                    # Para múltiples palabras, mantener el formato original pero limpiar
+                    transcribed_text = transcribed_text.strip()
+                
                 print(f"📝 Texto transcrito: '{transcribed_text}'")
                 return transcribed_text
             else:

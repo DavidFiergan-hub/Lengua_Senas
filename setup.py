@@ -21,7 +21,7 @@ setup(
     version="2.0.0",
     author="Signify Team",
     author_email="contact@signbridge.ai",
-    description="Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano",
+    description="Sistema Profesional de Consulta de Lengua de Señas Ecuatoriano",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/signbridge-ai/signbridge-ai",

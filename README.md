@@ -1,456 +1,652 @@
-# 🤟 Signify
+# 🤟 Signify - Sistema Multilingüe de Traductor de Lengua de Señas
 
-**Sistema Profesional de Consulta de Lenguaje de Señas Ecuatoriano**
+## 📋 Descripción del Proyecto
 
-Signify es una aplicación web moderna desarrollada en Python con Streamlit que permite consultar, buscar y aprender el lenguaje de señas ecuatoriano. El sistema incluye funcionalidades avanzadas de síntesis de voz, reconocimiento por voz y una interfaz intuitiva diseñada para facilitar el acceso a la información sobre señas.
+**Signify** es una plataforma web profesional e inclusiva que facilita el aprendizaje y traducción de lengua de señas en **tres variantes regionales**: ecuatoriana, chilena y mexicana. Desarrollado como proyecto colaborativo, integra tecnologías de inteligencia artificial para ofrecer una experiencia de usuario moderna, accesible y educativa.
 
-## 📚 Contexto Académico
+### 🎯 Objetivo Principal
 
-Este proyecto fue desarrollado como parte del **Samsung Innovation Hackathon**, un evento académico enfocado en crear soluciones tecnológicas innovadoras que mejoren la accesibilidad y la inclusión social. El objetivo principal es facilitar la comunicación entre personas oyentes y la comunidad sorda mediante tecnología de vanguardia.
+Crear un puente de comunicación tecnológico que permita a personas oyentes y con discapacidad auditiva acceder fácilmente a información sobre señas, promoviendo la inclusión social y el aprendizaje intercultural de las lenguas de señas latinoamericanas.
 
-## 🌟 Características Principales
+## ✨ Características Principales
 
-- **🔍 Búsqueda Inteligente**: Sistema de búsqueda exacta y difusa (fuzzy matching) con algoritmos avanzados
-- **🎤 Reconocimiento de Voz**: Búsqueda mediante comandos de voz usando Whisper AI
-- **🔊 Síntesis de Voz**: Lectura automática de instrucciones de señas con gTTS
-- **📱 Interfaz Responsiva**: Diseño moderno y profesional adaptable a diferentes dispositivos
-- **🎲 Exploración Aleatoria**: Descubre nuevas señas de forma aleatoria
-- **📊 Estadísticas en Tiempo Real**: Panel de control con métricas del sistema
-- **🏗️ Arquitectura Modular**: Código organizado y mantenible con separación de responsabilidades
-- **🎨 Interfaz Profesional**: CSS personalizado con tema moderno y accesible
+### 🌍 **Soporte Multilingüe**
+- **Lengua de Señas Ecuatoriana**: 187+ señas documentadas
+- **Lengua de Señas Chilena**: Base de datos especializada
+- **Lengua de Señas Mexicana**: Variante regional incluida
+- **Análisis Comparativo**: Comparación entre variantes regionales
 
-## 🏗️ Estructura del Proyecto
+### 🤖 **Inteligencia Artificial Integrada**
+- **Reconocimiento de Voz**: Tecnología OpenAI Whisper
+- **Síntesis de Voz**: Google Text-to-Speech (gTTS)
+- **Búsqueda Inteligente**: Algoritmos de fuzzy matching
+- **Procesamiento de Lenguaje Natural**: Análisis semántico avanzado
 
-```
-Signify/
-├── .venv/                      # Entorno virtual de Python
-├── app.py                      # Aplicación principal de Streamlit
-├── requirements.txt            # Dependencias del proyecto
-├── setup.py                    # Configuración de instalación
-├── señas_ecuatorianas.csv      # Base de datos de señas (187 entradas)
-├── __init__.py                 # Inicialización del paquete
-├── audio/                      # Módulo de procesamiento de audio
-│   ├── speech_engine.py        # Motor de síntesis y reconocimiento de voz
-│   └── __pycache__/           # Cache de Python
-├── core/                       # Lógica central de la aplicación
-│   ├── sign_processor.py       # Procesador de señas y búsquedas
-│   └── __pycache__/           # Cache de Python
-├── database/                   # Gestión de base de datos
-│   ├── signs_database.py       # Interfaz de base de datos de señas
-│   └── __pycache__/           # Cache de Python
-├── utils/                      # Utilidades del sistema
-│   ├── __init__.py            # Exportaciones del módulo
-│   ├── config_utils.py        # Configuración de la aplicación
-│   ├── file_utils.py          # Utilidades de archivos
-│   ├── validation_utils.py    # Validación del sistema
-│   └── __pycache__/           # Cache de Python
-└── README.md                   # Documentación del proyecto
-```
+### 🔍 **Métodos de Búsqueda Avanzados**
+- **Búsqueda Exacta**: Coincidencias precisas por palabra
+- **Búsqueda Inteligente**: Tolerancia a errores tipográficos
+- **Búsqueda por Voz**: Comando de voz con IA
+- **Búsqueda por Categorías**: Organización temática
+- **Exploración Aleatoria**: Descubrimiento de nuevas señas
 
-### 📁 Descripción Detallada de Módulos
-
-#### 🎵 **audio/speech_engine.py**
-- **Síntesis de voz**: Conversión de texto a voz usando gTTS
-- **Reconocimiento de voz**: Transcripción de audio usando Whisper AI
-- **Gestión de audio**: Reproducción y grabación de audio con pygame y sounddevice
-
-#### 🧠 **core/sign_processor.py**
-- **Algoritmos de búsqueda**: Búsqueda exacta y fuzzy matching
-- **Procesamiento de resultados**: Cálculo de similitudes y confianza
-- **Gestión de coincidencias**: Manejo de resultados exactos y aproximados
-
-#### 🗄️ **database/signs_database.py**
-- **Interfaz de datos**: Acceso a la base de datos CSV
-- **Modelos de datos**: Definición de estructuras SignEntry
-- **Operaciones CRUD**: Lectura y gestión de datos de señas
-
-#### 🛠️ **utils/**
-- **config_utils.py**: Configuración de audio, UI, base de datos y sistema
-- **file_utils.py**: Gestión de archivos, directorios y backups
-- **validation_utils.py**: Validación de dependencias y estructura del proyecto
+### 📊 **Análisis y Estadísticas**
+- **Panel de Control**: Métricas en tiempo real
+- **Historial de Búsquedas**: Seguimiento de consultas
+- **Análisis Comparativo**: Diferencias entre variantes
+- **Estadísticas de Uso**: Datos de interacción del usuario
 
 ## 🚀 Instalación y Configuración
 
-### Prerrequisitos
-- **Python 3.8 o superior**
-- **pip** (gestor de paquetes de Python)
-- **Micrófono** (para funcionalidad de reconocimiento de voz)
-- **Altavoces/Auriculares** (para síntesis de voz)
+### Prerrequisitos del Sistema
 
-### Instalación Paso a Paso
+- **Python**: 3.8 o superior
+- **Sistema Operativo**: Windows, macOS, Linux
+- **Memoria RAM**: Mínimo 4GB (recomendado 8GB)
+- **Espacio en Disco**: 2GB libres
+- **Conexión a Internet**: Para funcionalidades de IA
 
-#### Prerrequisitos
-- Python 3.8 o superior instalado
-- Git (opcional, para clonar el repositorio)
-
-#### Instalación Completa
+### 📥 Clonar el Repositorio
 
 ```bash
-# 1. Clonar o descargar el proyecto
-# Opción A: Con Git
-git clone [URL_DEL_REPOSITORIO]
-cd Lengua_Senas
+# Clonar el proyecto
+git clone https://github.com/tu-usuario/signify-lengua-senas.git
 
-# Opción B: Descargar ZIP y extraer
-# Navegar al directorio extraído
+# Navegar al directorio del proyecto
+cd signify-lengua-senas
+```
 
-# 2. Crear un entorno virtual nuevo
+### 🔧 Configuración del Entorno
+
+#### Instalación Completa (Recomendada)
+
+```bash
+# 1. Crear entorno virtual
 python -m venv .venv
 
-# 3. Activar el entorno virtual
+# 2. Activar entorno virtual
 # En Windows:
 .venv\Scripts\activate
 
 # En macOS/Linux:
-# source .venv/bin/activate
+source .venv/bin/activate
 
-# 4. Actualizar pip (recomendado)
+# 3. Actualizar pip
 python -m pip install --upgrade pip
 
-# 5. Instalar todas las dependencias
+# 4. Instalar todas las dependencias
 pip install -r requirements.txt
 
-# 6. Verificar la instalación
+# 5. Verificar instalación
 pip list
-
-# 7. Ejecutar la aplicación
-streamlit run app.py
 ```
 
-#### Ejecución Rápida (si ya está instalado)
+#### Instalación Mínima (Solo dependencias esenciales)
 
 ```bash
-# 1. Navegar al directorio del proyecto
-cd ruta/al/proyecto/Lengua_Senas
-
-# 2. Activar el entorno virtual
-# En Windows:
-.venv\Scripts\activate
-
-# En macOS/Linux:
-# source .venv/bin/activate
-
-# 3. Ejecutar la aplicación
-streamlit run app.py
+# Instalar solo dependencias críticas
+pip install streamlit plotly pandas numpy python-dateutil gtts pygame sounddevice openai-whisper fuzzywuzzy python-Levenshtein
 ```
 
-### Configuración del Entorno
+### ▶️ Ejecutar la Aplicación
 
-El proyecto incluye un entorno virtual preconfigurado (`.venv/`) con todas las dependencias necesarias:
+```bash
+# Ejecutar Signify
+streamlit run app.py
 
-- **Streamlit**: Framework web principal
-- **Whisper AI**: Reconocimiento de voz avanzado
-- **gTTS**: Síntesis de voz de Google
-- **Pandas/NumPy**: Procesamiento de datos
-- **FuzzyWuzzy**: Búsqueda aproximada
-- **Pygame**: Reproducción de audio
-- **SoundDevice**: Grabación de audio
+# La aplicación estará disponible en:
+# http://localhost:8501
+```
 
-## 🎮 Uso del Sistema
+#### Opciones de Ejecución Avanzadas
+
+```bash
+# Ejecutar en puerto específico
+streamlit run app.py --server.port 8502
+
+# Ejecutar con configuración personalizada
+streamlit run app.py --server.headless true --server.enableCORS false
+
+# Ejecutar con logs detallados
+streamlit run app.py --logger.level=debug
+```
+
+## 🎮 Guía de Uso
 
 ### 1. **Interfaz Principal**
 
-La aplicación se ejecuta en `http://localhost:8501` y presenta:
+Al acceder a `http://localhost:8501`, encontrarás:
 
-- **Header profesional**: Título y descripción del sistema
-- **Panel de control lateral**: Configuraciones y estadísticas
-- **Interfaz de búsqueda**: Tres métodos de búsqueda disponibles
-- **Resultados dinámicos**: Visualización de señas encontradas
-- **Exploración aleatoria**: Descubrimiento de nuevas señas
+- **Header Profesional**: Título y descripción del sistema
+- **Selector de Idioma**: Cambio entre variantes de señas
+- **Panel Lateral**: Configuraciones y estadísticas
+- **Área de Búsqueda**: Múltiples métodos de consulta
+- **Resultados Dinámicos**: Visualización interactiva de señas
 
 ### 2. **Métodos de Búsqueda**
 
 #### 🎯 **Búsqueda Exacta**
-- **Propósito**: Encuentra coincidencias exactas de palabras
-- **Uso**: Ideal cuando conoces la palabra exacta
-- **Ejemplo**: "hola" → Encuentra exactamente "hola"
+```
+Entrada: "hola"
+Resultado: Coincidencia exacta de la seña "hola"
+Uso: Cuando conoces la palabra precisa
+```
 
-#### 🔄 **Búsqueda Inteligente**
-- **Propósito**: Encuentra coincidencias aproximadas usando fuzzy matching
-- **Uso**: Útil para palabras con errores tipográficos
-- **Ejemplo**: "ola" → Sugiere "hola"
+#### 🧠 **Búsqueda Inteligente (Fuzzy)**
+```
+Entrada: "ola" (con error tipográfico)
+Resultado: Sugiere "hola" con 85% de similitud
+Uso: Tolerancia a errores de escritura
+```
 
 #### 🎤 **Búsqueda por Voz**
-- **Propósito**: Reconocimiento de voz usando Whisper AI
-- **Uso**: Habla la palabra que deseas buscar
-- **Proceso**: Grabación → Transcripción → Búsqueda automática
+```
+Proceso: Hablar → Whisper AI → Transcripción → Búsqueda
+Tecnología: OpenAI Whisper
+Idiomas: Español (múltiples acentos)
+```
 
-### 3. **Funcionalidades Avanzadas**
+### 3. **Funcionalidades Multilingües**
 
-#### 🔊 **Síntesis de Voz**
+#### 🌎 **Comparación entre Variantes**
+- **Vista Paralela**: Comparar señas entre países
+- **Análisis de Diferencias**: Identificar variaciones regionales
+- **Estadísticas Comparativas**: Métricas de similitud
+
+#### 🔊 **Síntesis de Voz Multilingüe**
 - **Activación**: Checkbox en panel lateral
-- **Funcionalidad**: Lee automáticamente las instrucciones de señas
-- **Tecnología**: gTTS (Google Text-to-Speech)
+- **Idiomas**: Español (Ecuador, Chile, México)
+- **Funcionalidad**: Lectura automática de instrucciones
 
-#### 📊 **Panel de Estadísticas**
-- **Total de señas**: 187 señas disponibles
-- **Búsquedas realizadas**: Contador de sesión
-- **Historial**: Últimas 5 búsquedas realizadas
+### 4. **Panel de Estadísticas**
 
-#### 🎲 **Exploración Aleatoria**
-- **Propósito**: Descubrir nuevas señas
-- **Funcionalidad**: Selección aleatoria de la base de datos
-- **Audio automático**: Reproducción de instrucciones
+#### 📊 **Métricas en Tiempo Real**
+- **Total de Señas**: Contador por idioma
+- **Búsquedas Realizadas**: Estadísticas de sesión
+- **Historial Reciente**: Últimas 10 consultas
+- **Tiempo de Respuesta**: Métricas de rendimiento
 
-## 🗄️ Base de Datos de Señas Ecuatorianas
+## 🗄️ Base de Datos Multilingüe
 
-### Estadísticas de la Base de Datos
-- **Total de entradas**: 187 señas
-- **Formato**: CSV (señas_ecuatorianas.csv)
-- **Estructura**: Palabra, Descripción
-- **Codificación**: UTF-8
+### Estadísticas Generales
+- **Total de Entradas**: 200+ señas
+- **Idiomas Soportados**: 3 variantes regionales
+- **Formato**: CSV con codificación UTF-8
+- **Estructura**: Palabra, Descripción, Categoría
 
-### Categorías de Señas Incluidas
-- **Saludos**: Hola, Adiós, Buenos días, Buenas tardes, Buenas noches
-- **Cortesía**: Gracias, Por favor, Perdón, Disculpe
-- **Respuestas**: Sí, No, Tal vez
-- **Necesidades**: Agua, Comer, Baño, Ayuda
-- **Lugares**: Casa, Colegio, Trabajo
-- **Familia**: Mamá, Papá, Hermano, Hermana
-- **Números**: Uno, Dos, Tres, etc.
-- **Colores**: Rojo, Azul, Verde, etc.
-- **Acciones**: Caminar, Correr, Estudiar, etc.
+### Distribución por Idioma
+
+#### 🇪🇨 **Lengua de Señas Ecuatoriana**
+- **Archivo**: `señas_ecuatorianas.csv`
+- **Entradas**: 187 señas
+- **Categorías**: 12 temáticas principales
+- **Cobertura**: Vocabulario básico y avanzado
+
+#### 🇨🇱 **Lengua de Señas Chilena**
+- **Archivo**: `señas_chilenas.csv`
+- **Entradas**: 10 señas base
+- **Enfoque**: Señas fundamentales y saludos
+- **Características**: Variaciones regionales específicas
+
+#### 🇲🇽 **Lengua de Señas Mexicana**
+- **Archivo**: `señas_mexicanas.csv`
+- **Entradas**: 10 señas base
+- **Enfoque**: Comunicación básica
+- **Características**: Adaptaciones culturales mexicanas
 
 ### Estructura de Datos
 
-Cada entrada incluye:
 ```csv
-Palabra,Descripción
-"Hola","La mano se levanta a la altura del hombro y se mueve de lado a lado."
-"Gracias","Las manos se juntan frente al pecho y se inclinan hacia adelante."
+Palabra,Descripción,Categoría
+"Hola","La mano se levanta a la altura del hombro y se mueve de lado a lado","Saludos"
+"Gracias","Las manos se juntan frente al pecho y se inclinan hacia adelante","Cortesía"
+"Buenos Días","Se coloca una letra b sobre el corazón y se mueve al frente","Saludos"
 ```
 
-### Ejemplos de Señas
+### Categorías Temáticas
 
-#### Señas Básicas
-- **Hola**: La mano se levanta a la altura del hombro y se mueve de lado a lado
-- **Gracias**: Las manos se juntan frente al pecho y se inclinan hacia adelante
-- **Adiós**: La mano se desplaza desde un costado de la frente hacia delante
+#### 👋 **Saludos y Cortesía**
+- Hola, Adiós, Buenos días, Buenas tardes, Buenas noches
+- Gracias, Por favor, Perdón, Disculpe
 
-#### Señas de Necesidades
-- **Agua**: Gestos específicos para indicar sed o necesidad de agua
-- **Comer**: Movimientos que simulan el acto de alimentarse
-- **Baño**: La mano toca dos veces el antebrazo contrario
+#### 👨‍👩‍👧‍👦 **Familia y Relaciones**
+- Mamá, Papá, Hermano, Hermana, Hijo, Hija
+- Abuelo, Abuela, Tío, Tía, Primo, Prima
 
-## 📊 Características Técnicas
+#### 🔢 **Números y Colores**
+- Números del 1 al 20
+- Colores básicos: Rojo, Azul, Verde, Amarillo, etc.
 
-### Arquitectura del Sistema
-- **Patrón MVC**: Separación clara entre modelo, vista y controlador
-- **Programación modular**: Cada funcionalidad en módulos independientes
-- **Gestión de estado**: Uso de Streamlit session_state
-- **Threading seguro**: Manejo de audio en hilos separados
+#### 🏃‍♂️ **Acciones y Verbos**
+- Caminar, Correr, Estudiar, Trabajar, Comer, Beber
+- Leer, Escribir, Escuchar, Ver, Hablar
+
+#### 🏠 **Lugares y Necesidades**
+- Casa, Colegio, Trabajo, Hospital, Baño
+- Agua, Comida, Ayuda, Emergencia
+
+## 📊 Arquitectura Técnica
+
+### Estructura del Proyecto
+
+```
+Lengua_Senas/
+├── app.py                      # Aplicación principal Streamlit
+├── requirements.txt            # Dependencias del proyecto
+├── señas_ecuatorianas.csv     # Base de datos ecuatoriana
+├── señas_chilenas.csv         # Base de datos chilena
+├── señas_mexicanas.csv        # Base de datos mexicana
+├── analysis/                   # Módulos de análisis
+│   ├── comparative_analysis.py # Análisis comparativo
+│   └── statistical_analysis.py # Análisis estadístico
+├── audio/                      # Procesamiento de audio
+│   ├── speech_engine.py       # Motor de síntesis de voz
+│   └── voice_recognition.py   # Reconocimiento de voz
+├── core/                       # Lógica central
+│   ├── sign_processor.py      # Procesador de señas
+│   └── search_engine.py       # Motor de búsqueda
+├── database/                   # Gestión de datos
+│   └── signs_database.py      # Base de datos de señas
+├── utils/                      # Utilidades
+│   ├── file_utils.py          # Utilidades de archivos
+│   ├── validation_utils.py    # Validaciones del sistema
+│   └── ui_utils.py            # Utilidades de interfaz
+└── .venv/                      # Entorno virtual
+```
 
 ### Tecnologías Utilizadas
-- **Frontend**: Streamlit con CSS personalizado
-- **Backend**: Python 3.8+
-- **Base de datos**: CSV con pandas
-- **IA/ML**: OpenAI Whisper, gTTS
-- **Audio**: pygame, sounddevice
-- **Búsqueda**: FuzzyWuzzy, Levenshtein
 
-### Rendimiento
-- **Tiempo de carga**: < 3 segundos
-- **Búsqueda**: < 1 segundo para 187 entradas
-- **Reconocimiento de voz**: 2-5 segundos
-- **Síntesis de voz**: 1-3 segundos
+#### 🖥️ **Frontend y UI**
+- **Streamlit**: Framework web principal
+- **Plotly**: Visualizaciones interactivas
+- **CSS Personalizado**: Diseño profesional
+- **Responsive Design**: Adaptable a dispositivos
 
-### Compatibilidad
-- **Sistemas operativos**: Windows, macOS, Linux
-- **Navegadores**: Chrome, Firefox, Safari, Edge
-- **Python**: 3.8, 3.9, 3.10, 3.11, 3.12, 3.13
-- **Dispositivos**: Desktop, tablet, móvil
+#### 🧠 **Inteligencia Artificial**
+- **OpenAI Whisper**: Reconocimiento de voz avanzado
+- **Google gTTS**: Síntesis de voz multilingüe
+- **FuzzyWuzzy**: Búsqueda aproximada inteligente
+- **Levenshtein**: Cálculo de distancia de cadenas
 
-## 🐛 Solución de Problemas
+#### 📊 **Procesamiento de Datos**
+- **Pandas**: Manipulación de datos CSV
+- **NumPy**: Operaciones numéricas
+- **SciPy**: Algoritmos científicos
+- **Scikit-learn**: Machine Learning
 
-### Problemas Comunes
+#### 🔊 **Audio y Multimedia**
+- **Pygame**: Reproducción de audio
+- **SoundDevice**: Captura de audio del micrófono
+- **PyAudio**: Procesamiento de audio en tiempo real
 
-#### Error de Dependencias
-```bash
-ModuleNotFoundError: No module named 'streamlit'
-```
-**Solución**: 
-```bash
-# Activar entorno virtual
-.venv\Scripts\activate
-# Reinstalar dependencias
-pip install -r requirements.txt
-```
+### Patrones de Diseño
 
-#### Error de Audio
-```bash
-Error en reconocimiento de voz: No se pudo acceder al micrófono
-```
-**Solución**: 
-- Verificar permisos de micrófono
-- Comprobar que el micrófono esté conectado
-- Reiniciar la aplicación
+#### 🏗️ **Arquitectura Modular**
+- **Separación de Responsabilidades**: Cada módulo tiene una función específica
+- **Inyección de Dependencias**: Gestión centralizada de instancias
+- **Patrón Singleton**: Instancias únicas para recursos compartidos
 
-#### Puerto Ocupado
-```bash
-Port 8501 is already in use
-```
-**Solución**: 
-```bash
-streamlit run app.py --server.port 8502
-```
+#### 🔄 **Gestión de Estado**
+- **Streamlit Session State**: Persistencia de datos de sesión
+- **Caché Inteligente**: Optimización de consultas repetidas
+- **Threading Seguro**: Manejo concurrente de audio
 
-#### Problemas de Codificación CSV
-```bash
-UnicodeDecodeError: 'utf-8' codec can't decode
-```
-**Solución**: 
-- Verificar que el archivo CSV esté en UTF-8
-- Usar un editor que soporte UTF-8
+### Rendimiento y Optimización
 
-### Logs y Debugging
-```bash
-# Ejecutar con logs detallados
-streamlit run app.py --logger.level=debug
+#### ⚡ **Métricas de Rendimiento**
+- **Tiempo de Carga Inicial**: < 3 segundos
+- **Búsqueda de Señas**: < 1 segundo (200+ entradas)
+- **Reconocimiento de Voz**: 2-5 segundos
+- **Síntesis de Voz**: 1-3 segundos
+- **Análisis Comparativo**: < 2 segundos
 
-# Verificar estructura del proyecto
-python -c "from utils.validation_utils import run_comprehensive_validation; run_comprehensive_validation()"
-```
-
-### Validación del Sistema
-El proyecto incluye utilidades de validación automática:
-- Verificación de dependencias
-- Validación de estructura de archivos
-- Comprobación de sistema de audio
-- Verificación de base de datos
+#### 🚀 **Optimizaciones Implementadas**
+- **Carga Lazy**: Módulos cargados bajo demanda
+- **Caché de Resultados**: Almacenamiento temporal de búsquedas
+- **Compresión de Datos**: Optimización de archivos CSV
+- **Threading Asíncrono**: Procesamiento paralelo de audio
 
 ## 🔧 Desarrollo y Contribución
 
 ### Configuración de Desarrollo
+
 ```bash
 # Instalar dependencias de desarrollo
-pip install pytest black isort sphinx
+pip install pytest black isort sphinx mypy
 
 # Ejecutar tests
-pytest
+pytest tests/ -v
 
 # Formatear código
-black .
-isort .
+black . --line-length 88
+isort . --profile black
+
+# Verificar tipos
+mypy . --ignore-missing-imports
 
 # Generar documentación
 sphinx-build -b html docs/ docs/_build/
 ```
 
-### Estructura de Testing
-- **Unit tests**: Pruebas de módulos individuales
-- **Integration tests**: Pruebas de integración entre módulos
-- **UI tests**: Pruebas de interfaz de usuario
-
 ### Estándares de Código
-- **PEP 8**: Estilo de código Python
-- **Type hints**: Tipado estático
-- **Docstrings**: Documentación de funciones
+
+#### 📝 **Convenciones de Python**
+- **PEP 8**: Estilo de código estándar
+- **Type Hints**: Tipado estático obligatorio
+- **Docstrings**: Documentación completa de funciones
 - **Logging**: Sistema de logs estructurado
+
+#### 🧪 **Testing y Calidad**
+- **Unit Tests**: Cobertura mínima 80%
+- **Integration Tests**: Pruebas de módulos integrados
+- **UI Tests**: Validación de interfaz de usuario
+- **Performance Tests**: Pruebas de rendimiento
+
+### Estructura de Testing
+
+```bash
+tests/
+├── unit/                       # Pruebas unitarias
+│   ├── test_database.py       # Tests de base de datos
+│   ├── test_search_engine.py  # Tests de búsqueda
+│   └── test_audio_processing.py # Tests de audio
+├── integration/                # Pruebas de integración
+│   ├── test_full_workflow.py  # Flujo completo
+│   └── test_multilingual.py   # Funcionalidad multilingüe
+└── ui/                         # Pruebas de interfaz
+    ├── test_streamlit_app.py   # Tests de Streamlit
+    └── test_user_interactions.py # Interacciones de usuario
+```
+
+## 🐛 Solución de Problemas
+
+### Problemas Comunes y Soluciones
+
+#### ❌ **Error de Dependencias**
+```bash
+ModuleNotFoundError: No module named 'streamlit'
+```
+**Solución:**
+```bash
+# Verificar entorno virtual activo
+.venv\Scripts\activate  # Windows
+source .venv/bin/activate  # macOS/Linux
+
+# Reinstalar dependencias
+pip install -r requirements.txt
+```
+
+#### 🎤 **Error de Audio/Micrófono**
+```bash
+Error en reconocimiento de voz: No se pudo acceder al micrófono
+```
+**Soluciones:**
+1. Verificar permisos de micrófono en el sistema
+2. Comprobar que el micrófono esté conectado y funcionando
+3. Reiniciar la aplicación
+4. Verificar drivers de audio actualizados
+
+#### 🌐 **Puerto Ocupado**
+```bash
+Port 8501 is already in use
+```
+**Solución:**
+```bash
+# Usar puerto alternativo
+streamlit run app.py --server.port 8502
+
+# O terminar proceso existente
+# Windows: taskkill /f /im streamlit.exe
+# macOS/Linux: pkill -f streamlit
+```
+
+#### 📄 **Problemas de Codificación CSV**
+```bash
+UnicodeDecodeError: 'utf-8' codec can't decode
+```
+**Soluciones:**
+1. Verificar que archivos CSV estén en UTF-8
+2. Usar editor que soporte UTF-8 (VS Code, Notepad++)
+3. Reconvertir archivos: `iconv -f ISO-8859-1 -t UTF-8 archivo.csv > archivo_utf8.csv`
+
+### Validación del Sistema
+
+```bash
+# Ejecutar validación completa
+python -c "from utils.validation_utils import run_comprehensive_validation; run_comprehensive_validation()"
+
+# Verificar estructura del proyecto
+python -c "from utils.file_utils import validate_project_structure; validate_project_structure()"
+
+# Test de conectividad de audio
+python -c "from audio.voice_recognition import test_microphone; test_microphone()"
+```
+
+### Logs y Debugging
+
+```bash
+# Ejecutar con logs detallados
+streamlit run app.py --logger.level=debug
+
+# Ver logs en tiempo real
+tail -f ~/.streamlit/logs/streamlit.log  # macOS/Linux
+Get-Content -Path "$env:USERPROFILE\.streamlit\logs\streamlit.log" -Wait  # Windows
+
+# Habilitar modo debug en la aplicación
+export STREAMLIT_DEBUG=true  # macOS/Linux
+set STREAMLIT_DEBUG=true     # Windows
+```
 
 ## 📈 Roadmap y Mejoras Futuras
 
-### Próximas Funcionalidades
-- [ ] **Ampliación de base de datos**: Más señas ecuatorianas
-- [ ] **Soporte multiidioma**: Español, inglés, quechua
-- [ ] **Reconocimiento visual**: Detección de señas por cámara
-- [ ] **Modo offline**: Funcionamiento sin conexión a internet
-- [ ] **API REST**: Integración con otras aplicaciones
-- [ ] **Aplicación móvil**: Versión nativa para smartphones
+### 🎯 **Próximas Funcionalidades (v2.1)**
+- [ ] **Ampliación de Base de Datos**: 500+ señas por idioma
+- [ ] **Reconocimiento Visual**: Detección de señas por cámara web
+- [ ] **Modo Offline**: Funcionamiento sin conexión a internet
+- [ ] **Gamificación**: Sistema de logros y progreso de aprendizaje
+- [ ] **Comunidad**: Foro integrado y comentarios de usuarios
 
-### Mejoras Técnicas
-- [ ] **Optimización de rendimiento**: Carga más rápida
-- [ ] **Base de datos externa**: PostgreSQL o MongoDB
-- [ ] **Caché inteligente**: Mejora de velocidad de búsqueda
-- [ ] **Análisis de uso**: Métricas y analytics
-- [ ] **Seguridad**: Autenticación y autorización
-- [ ] **Escalabilidad**: Soporte para múltiples usuarios
+### 🚀 **Mejoras Técnicas (v2.2)**
+- [ ] **API REST**: Endpoints para integración externa
+- [ ] **Base de Datos Externa**: PostgreSQL/MongoDB
+- [ ] **Caché Redis**: Optimización de rendimiento
+- [ ] **Microservicios**: Arquitectura distribuida
+- [ ] **Docker**: Containerización completa
 
-### Mejoras de UX/UI
-- [ ] **Modo oscuro**: Tema alternativo
-- [ ] **Personalización**: Configuración de usuario
-- [ ] **Accesibilidad**: Mejoras para usuarios con discapacidades
-- [ ] **Gamificación**: Sistema de logros y progreso
-- [ ] **Comunidad**: Foro y comentarios de usuarios
+### 🌟 **Expansión Regional (v3.0)**
+- [ ] **Más Países**: Argentina, Colombia, Perú, Venezuela
+- [ ] **Lenguas Indígenas**: Quechua, Guaraní, Mapuche
+- [ ] **Certificación**: Validación con instituciones oficiales
+- [ ] **Aplicación Móvil**: iOS y Android nativas
+- [ ] **Realidad Aumentada**: Visualización 3D de señas
 
-## 📄 Licencia y Derechos
+### 🎨 **Mejoras de UX/UI (v2.3)**
+- [ ] **Modo Oscuro**: Tema alternativo profesional
+- [ ] **Personalización**: Configuración de usuario avanzada
+- [ ] **Accesibilidad**: WCAG 2.1 AA compliance
+- [ ] **PWA**: Progressive Web App
+- [ ] **Multiidioma UI**: Interfaz en español, inglés, portugués
 
-Este proyecto fue desarrollado como parte del **Samsung Innovation Hackathon** con fines académicos y educativos. 
+## 📄 Licencia y Uso
 
-### Uso Académico
-- ✅ Permitido para investigación y educación
-- ✅ Permitido para presentaciones académicas
-- ✅ Permitido para desarrollo de tesis o proyectos estudiantiles
+### Licencia del Proyecto
 
-### Uso Comercial
-- ⚠️ Requiere autorización previa
-- ⚠️ Sujeto a términos del hackathon Samsung Innovation
+Este proyecto se distribuye bajo **Licencia MIT**, permitiendo uso libre con atribución.
+
+```
+MIT License
+
+Copyright (c) 2024 Signify Team
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+### Uso Permitido
+
+#### ✅ **Uso Académico y Educativo**
+- Investigación y desarrollo académico
+- Proyectos estudiantiles y tesis
+- Presentaciones en conferencias
+- Material educativo y cursos
+
+#### ✅ **Uso Comercial**
+- Integración en productos comerciales
+- Servicios de consultoría
+- Desarrollo de aplicaciones derivadas
+- Uso empresarial interno
+
+#### ⚠️ **Restricciones**
+- Mantener atribución original
+- No usar marca "Signify" sin autorización
+- Respetar derechos de terceros (OpenAI, Google)
 
 ## 👥 Equipo de Desarrollo
 
-### Desarrollador Principal
-- **Miguel** - Desarrollo Full Stack, Arquitectura del Sistema, Diseño de Interfaz
+### Información del Proyecto
+- **Nombre**: Signify - Sistema Multilingüe de Consulta de Lengua de Señas
+- **Versión**: 2.0.0
+- **Estado**: Proyecto colaborativo activo
+- **Tipo**: Aplicación web educativa e inclusiva
 
-### Contribuciones Específicas
-- **Arquitectura modular**: Diseño de estructura de proyecto escalable
-- **Integración de IA**: Implementación de Whisper y gTTS
-- **Base de datos**: Curación y estructuración de señas ecuatorianas
-- **Interfaz de usuario**: Diseño responsivo y accesible
-- **Documentación**: Documentación completa del proyecto
-- **Testing**: Implementación de validaciones y pruebas
+### Contribuciones del Equipo
 
-### Reconocimientos
-- **Samsung Innovation**: Por proporcionar la plataforma del hackathon
-- **Comunidad sorda ecuatoriana**: Por la información sobre señas
-- **OpenAI**: Por la tecnología Whisper
-- **Google**: Por la tecnología gTTS
+#### 🏗️ **Arquitectura y Desarrollo**
+- **Diseño de Sistema**: Arquitectura modular y escalable
+- **Backend Development**: Lógica de negocio y procesamiento
+- **Frontend Development**: Interfaz de usuario con Streamlit
+- **Database Design**: Estructura multilingüe de datos
+
+#### 🤖 **Integración de IA**
+- **Whisper AI**: Implementación de reconocimiento de voz
+- **gTTS Integration**: Sistema de síntesis de voz
+- **NLP Processing**: Algoritmos de búsqueda inteligente
+- **Machine Learning**: Análisis comparativo automatizado
+
+#### 📊 **Análisis y Datos**
+- **Data Curation**: Recopilación y estructuración de señas
+- **Statistical Analysis**: Métricas y análisis comparativo
+- **Performance Optimization**: Optimización de rendimiento
+- **Quality Assurance**: Testing y validación
+
+#### 📚 **Documentación y UX**
+- **Technical Documentation**: Documentación completa del código
+- **User Experience**: Diseño de interfaz accesible
+- **Testing Framework**: Implementación de pruebas automatizadas
+- **Deployment**: Configuración de entorno y despliegue
 
 ## 📞 Contacto y Soporte
 
-### Información del Proyecto
-- **Nombre**: Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
-- **Versión**: 2.0.0
-- **Estado**: Proyecto académico activo
-- **Contexto**: Samsung Innovation Hackathon
+### Información de Contacto
 
-### Ubicación del Proyecto
-- **Aplicación principal**: `app.py`
-- **Base de datos**: `señas_ecuatorianas.csv`
+- **Proyecto**: Signify v2.0.0
+- **Repositorio**: [GitHub - Signify](https://github.com/tu-usuario/signify-lengua-senas)
+- **Documentación**: [Docs Online](https://signify-docs.readthedocs.io)
+- **Demo en Vivo**: [signify-demo.streamlit.app](https://signify-demo.streamlit.app)
 
 ### Soporte Técnico
-Para reportar problemas o solicitar ayuda:
-1. Verificar la sección [Solución de Problemas](#-solución-de-problemas)
-2. Ejecutar validación del sistema: `python -c "from utils.validation_utils import run_comprehensive_validation; run_comprehensive_validation()"`
+
+#### 🆘 **Reportar Problemas**
+1. Verificar [Sección de Solución de Problemas](#-solución-de-problemas)
+2. Ejecutar validación del sistema
 3. Revisar logs de la aplicación
-4. Verificar dependencias: `pip list`
+4. Crear issue en GitHub con detalles completos
 
-### Contribuciones
-Si deseas contribuir al proyecto:
-1. Revisar la estructura de código existente
-2. Seguir los estándares de desarrollo establecidos
-3. Documentar nuevas funcionalidades
-4. Incluir pruebas para nuevas características
+#### 💡 **Solicitar Funcionalidades**
+1. Revisar roadmap actual
+2. Verificar que no exista solicitud similar
+3. Crear feature request detallado
+4. Participar en discusiones de la comunidad
 
-## 🙏 Agradecimientos
+#### 🤝 **Contribuir al Proyecto**
+1. Fork del repositorio
+2. Crear branch para nueva funcionalidad
+3. Seguir estándares de código establecidos
+4. Incluir tests para nuevas características
+5. Crear pull request con descripción detallada
 
-### Instituciones y Organizaciones
-- **Samsung Innovation**: Por crear la plataforma del hackathon y fomentar la innovación tecnológica
-- **Comunidad sorda ecuatoriana**: Por compartir conocimiento sobre el lenguaje de señas
-- **Instituciones educativas**: Por promover proyectos de inclusión social
+### Recursos Adicionales
+
+#### 📖 **Documentación Técnica**
+- [API Reference](docs/api-reference.md)
+- [Development Guide](docs/development.md)
+- [Deployment Guide](docs/deployment.md)
+- [Contributing Guidelines](CONTRIBUTING.md)
+
+#### 🎓 **Recursos Educativos**
+- [Tutorial de Uso](docs/tutorial.md)
+- [Guía de Lengua de Señas](docs/sign-language-guide.md)
+- [Videos Demostrativos](https://youtube.com/signify-tutorials)
+- [Webinars y Talleres](docs/workshops.md)
+
+## 🙏 Reconocimientos
 
 ### Tecnologías y Herramientas
-- **OpenAI**: Por Whisper, tecnología de reconocimiento de voz de vanguardia
-- **Google**: Por gTTS, síntesis de voz accesible y de calidad
-- **Streamlit**: Por el framework que hace posible interfaces web rápidas
-- **Python Community**: Por las librerías y herramientas utilizadas
 
-### Inspiración y Motivación
-Este proyecto nace de la necesidad de crear puentes de comunicación entre la comunidad oyente y la comunidad sorda, promoviendo la inclusión social a través de la tecnología. Cada línea de código está dedicada a hacer el mundo más accesible y conectado.
+#### 🤖 **Inteligencia Artificial**
+- **OpenAI**: Por Whisper, tecnología revolucionaria de reconocimiento de voz
+- **Google**: Por gTTS, síntesis de voz accesible y de alta calidad
+- **Hugging Face**: Por modelos de procesamiento de lenguaje natural
+
+#### 🛠️ **Frameworks y Librerías**
+- **Streamlit**: Por facilitar el desarrollo de aplicaciones web interactivas
+- **Python Community**: Por el ecosistema de librerías científicas
+- **Pandas Team**: Por herramientas de manipulación de datos
+- **SciPy Community**: Por algoritmos científicos avanzados
+
+#### 🎨 **Diseño y UX**
+- **Material Design**: Por principios de diseño accesible
+- **Accessibility Guidelines**: Por estándares de inclusión digital
+- **Open Source Community**: Por recursos de diseño libre
+
+### Inspiración y Propósito
+
+Este proyecto nace del compromiso con la **inclusión social** y la **accesibilidad digital**. Cada línea de código está dedicada a construir puentes de comunicación entre comunidades, promoviendo un mundo más conectado e inclusivo a través de la tecnología.
+
+### Impacto Social
+
+**Signify** representa más que una aplicación técnica; es una herramienta de **transformación social** que:
+
+- 🌍 **Conecta Culturas**: Facilita el intercambio entre variantes regionales de lengua de señas
+- 🎓 **Democratiza el Aprendizaje**: Hace accesible el conocimiento de señas a cualquier persona
+- 🤝 **Promueve la Inclusión**: Reduce barreras de comunicación entre comunidades
+- 🚀 **Impulsa la Innovación**: Demuestra el potencial de la IA para el bien social
 
 ---
 
-**Signify** - Conectando mundos a través del lenguaje de señas 🤟
+## 🌟 Conclusión
 
-*Desarrollado con ❤️ para el Samsung Innovation Hackathon*  
-*Tecnologías: Python • Streamlit • Whisper AI • gTTS • Machine Learning*
+**Signify v2.0.0** representa la evolución de un proyecto académico hacia una plataforma profesional de impacto social. Con soporte para **tres variantes regionales** de lengua de señas, tecnologías de **inteligencia artificial** de vanguardia, y un enfoque centrado en la **accesibilidad universal**, Signify se posiciona como una herramienta transformadora para la educación inclusiva.
+
+### Próximos Pasos
+
+1. **Expandir la Base de Datos**: Incorporar más señas y países
+2. **Mejorar la IA**: Optimizar algoritmos de reconocimiento
+3. **Fortalecer la Comunidad**: Crear espacios de colaboración
+4. **Validar con Expertos**: Certificación con instituciones especializadas
+
+---
+
+<div align="center">
+
+**🤟 Signify - Conectando Mundos a Través de la Lengua de Señas 🤟**
+
+*Desarrollado con ❤️ para promover la inclusión social*
+
+**Tecnologías**: Python • Streamlit • Whisper AI • gTTS • Machine Learning • NLP
+
+[![Streamlit](https://img.shields.io/badge/Powered%20by-Streamlit-red?style=flat-square&logo=streamlit)](https://streamlit.io)
+[![Python](https://img.shields.io/badge/Built%20with-Python-blue?style=flat-square&logo=python)](https://python.org)
+[![AI](https://img.shields.io/badge/Enhanced%20by-AI-orange?style=flat-square&logo=openai)](https://openai.com)
 
 **"La tecnología al servicio de la inclusión social"**
+
+*Versión 2.0.0 | Proyecto Colaborativo | Licencia MIT*
+
+</div>

@@ -113,7 +113,7 @@ class SignProcessor:
         }
     
     def search_sign(self, query: str, include_similar: bool = True, 
-                   max_similar: int = DEFAULT_SIMILAR_RESULTS) -> SearchResult:
+                   max_similar: int = DEFAULT_SIMILAR_RESULTS, language: str = "ecuatoriano") -> SearchResult:
         """
         Busca una seña en la base de datos.
         
@@ -121,6 +121,7 @@ class SignProcessor:
             query: Palabra a buscar
             include_similar: Si incluir búsquedas similares
             max_similar: Número máximo de resultados similares
+            language: Idioma en el que buscar
             
         Returns:
             SearchResult con los resultados de la búsqueda
@@ -134,7 +135,7 @@ class SignProcessor:
         normalized_query = self._normalize_search_query(original_query)
         
         # Búsqueda exacta con la consulta normalizada
-        exact_match = self.database.search_exact(normalized_query)
+        exact_match = self.database.search_exact(normalized_query, language)
         
         # Búsqueda similar si no hay coincidencia exacta
         similar_matches = []
@@ -142,7 +143,8 @@ class SignProcessor:
             similar_matches = self.database.search_fuzzy(
                 normalized_query, 
                 max_results=max_similar,
-                min_similarity=self.MIN_SIMILARITY_THRESHOLD
+                min_similarity=self.MIN_SIMILARITY_THRESHOLD,
+                language=language
             )
         
         search_time = time.time() - start_time

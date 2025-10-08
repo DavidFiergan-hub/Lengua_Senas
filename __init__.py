@@ -1,7 +1,7 @@
-"""Signify - Sistema de Consulta de Lenguaje de Señas Ecuatoriano
+"""Signify - Sistema de Consulta de Lengua de Señas Ecuatoriano
 
 Un sistema profesional y modular para la consulta, búsqueda y aprendizaje
-del lenguaje de señas ecuatoriano con funcionalidades de síntesis de voz
+del lengua de señas ecuatoriano con funcionalidades de síntesis de voz
 y reconocimiento por voz.
 
 Módulos principales:
@@ -16,7 +16,7 @@ Versión: 2.0.0
 
 __version__ = "2.0.0"
 __author__ = "Signify Team"
-__description__ = "Sistema de Consulta de Lenguaje de Señas Ecuatoriano"
+__description__ = "Sistema de Consulta de Lengua de Señas Ecuatoriano"
 
 # Importaciones principales para facilitar el uso del paquete
 from .database.signs_database import SignsDatabase, SignEntry

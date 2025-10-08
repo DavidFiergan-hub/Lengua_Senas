@@ -1,6 +1,7 @@
-﻿Palabra,Descripción
+Palabra,Descripción
 Adiós,La mano se desplaza desde un costado de la frente hacia delante. La cabeza se reclina ligeramente y la boca se abre.
-"Ambos, as",La mano se despliza hacia abajo por el espacio que deja la mano contraria. Los labios están cerrados hacia fuera.
+Ambos,La mano se despliza hacia abajo por el espacio que deja la mano contraria. Los labios están cerrados hacia fuera.
+Ambas,La mano se despliza hacia abajo por el espacio que deja la mano contraria. Los labios están cerrados hacia fuera.
 Arreglar,Las manos se tocan y giran alternadamente. Se ven los dientes.
 Arriba,La mano sube.
 Asociación,"Las manos se acercan dos veces, una contiene a la otra."
@@ -11,13 +12,16 @@ Buenas Noches,"La mano en la frente se desplaza hacia abajo, las manos abiertas 
 Buenas Tardes,La mano cerrada en la frente se desplaza en curva hacia abajo mientras se abre simultáneamente y se asienta sobre la muñeca de la mano contraria.
 Buenos Días,La mano desde la frente se desplaza hacia abajo y después hacia arriba mientras se abre simultáneamente.
 Bus,Las manos se separan simultáneamente. La boca está abierta con los labios hacia fuera.
-Carné/ Credencial/ Identificación,La mano se mueve levemente hacia delante dos veces.
+Carné,La mano se mueve levemente hacia delante dos veces.
+Credencial,La mano se mueve levemente hacia delante dos veces.
+Identificación,La mano se mueve levemente hacia delante dos veces.
 Cédula,El pulgar toca la palma contraria y gira dos veces.
 Cerca,Las manos se tocan dos veces.
 Colegio,La mano de arriba golpea la palma de la mano contraria y sube en espiral.
 Comerciar,Las manos se deslizan alternadamente de adelante hacia atrás.
 Compartir,Las manos se deslizan alternadamente de adelante hacia atrás.
-"Compañero, a","Los dedos pulgar e índice de ambas manos se entrelazan, luego realizan un círculo. La boca esta en forma de beso abierto."
+Compañero,"Los dedos pulgar e índice de ambas manos se entrelazan, luego realizan un círculo. La boca esta en forma de beso abierto."
+Compañera,"Los dedos pulgar e índice de ambas manos se entrelazan, luego realizan un círculo. La boca esta en forma de beso abierto."
 Colega,"Los dedos pulgar e índice de ambas manos se entrelazan, luego realizan un círculo. La boca esta en forma de beso abierto."
 Comunicarse,Las manos se mueven alternadamente hacia delante y hacia atrás. La boca está cerrada con los labios hacia fuera.
 Comunicación,Las manos se mueven alternadamente hacia delante y hacia atrás. La boca está cerrada con los labios hacia fuera.
@@ -35,30 +39,35 @@ Doler,El dedo medio se separa del pulgar dos veces mientras la mano se mueve en�
 Dolor,El dedo medio se separa del pulgar dos veces mientras la mano se mueve enérgicamente hacia adelante. Se muestran los dientes.
 Emergencia,El brazo hace círculos hacia adentro. El ceño se frunce y se ven los dientes.
 Empleo,"El dedo se desliza por la frente hacia fuera, luego las manos se golpean varias veces."
-"Trabajador, a","El dedo se desliza por la frente hacia fuera, luego las manos se golpean varias veces."
+Trabajador,"El dedo se desliza por la frente hacia fuera, luego las manos se golpean varias veces."
+Trabajadora,"El dedo se desliza por la frente hacia fuera, luego las manos se golpean varias veces."
 En,Los dedos se introducen en el espacio que deja la mano contraria.
 Meter,Los dedos se introducen en el espacio que deja la mano contraria.
 Escribir,La mano se mueve en zigzag de adentro hacia fuera sobre la palma de la mano contraria.
 Esperar,El dedo medio se mueve hacia el centro de la palma varias veces.
 Escuchar,El pulgar toca la oreja y sin separarse los dedos se flexionan. Los labios están en forma de beso abierto.
-"Esposo, a",El pulgar se desliza por el dedo anular de la misma mano. La boca está cerrada con los labios hacia fuera.
+Esposo,El pulgar se desliza por el dedo anular de la misma mano. La boca está cerrada con los labios hacia fuera.
+Esposa,El pulgar se desliza por el dedo anular de la misma mano. La boca está cerrada con los labios hacia fuera.
 Estudiar,Las puntas de los dedos tocan dos veces la palma de la mano contaría.
 Formulario,Las manos dibujan un rectángulo.
 Gracias,La mano se separa del mentón hacia la palma contaría. El rostro sonríe.
 Graduarse,Las manos bajan hasta la sien.
 Graduación,Las manos bajan hasta la sien.
-"Graduado, a",Las manos bajan hasta la sien.
+Graduado,Las manos bajan hasta la sien.
+Graduada,Las manos bajan hasta la sien.
 Hasta,La mano baja y hace contacto con el dedo índice de la mano contraria.
 Hermano,El dedo índice se desliza por la muñeca de la mano contraria.
-"Hijo, a","La mano se desplaza hacia abajo, por detrás de la mano contraria."
+Hijo,"La mano se desplaza hacia abajo, por detrás de la mano contraria."
+Hija,"La mano se desplaza hacia abajo, por detrás de la mano contraria."
 Hola,La mano con los dedos juntos se abre y se cierra repetidas veces.
 Hombre,"El dedo se desliza sobre el bigote hacia fuera, la mano se cierra, baja con fuerza y se detiene. La boca se abre."
 Machismo,"El dedo se desliza sobre el bigote hacia fuera, la mano se cierra, baja con fuerza y se detiene. La boca se abre."
 IESS,Las manos se separan y forman un círculo hacia arriba. La boca está con los labios hacia fuera.
 Importante,Las manos se separan y forman un círculo hacia arriba. La boca está con los labios hacia fuera.
-Interprete,La mano junto a la otra se desplaza hacia abajo dos veces mientras se abre.
+Intérprete,La mano junto a la otra se desplaza hacia abajo dos veces mientras se abre.
 Investigar,Las manos se desplaza levemente hacia delante mientras los dedos se flexionan varias veces. La boca se muestra cerrada y con los labios hacia fuera.
-"Jefe, a",Las manos se mueven alternadamente de adelante hacia atrás.
+Jefe,Las manos se mueven alternadamente de adelante hacia atrás.
+Jefa,Las manos se mueven alternadamente de adelante hacia atrás.
 Leer,La mano que está atrás se desplaza de forma ondulada hacia abajo.
 Lejos,"La mano se desplaza hacia delante, la boca se abre."
 Lengua de Señas,Las manos se mueven de adelante hacia atrás alternadamente.
@@ -66,18 +75,21 @@ Señas,Las manos se mueven de adelante hacia atrás alternadamente.
 Libertad,Las manos se desplazan hacia fuera mientras giran. La boca está cerrada con los labios hacia fuera.
 Libre,Las manos se desplazan hacia fuera mientras giran. La boca está cerrada con los labios hacia fuera.
 Llenar,La mano se desliza sobre la mano contraria. La mejilla se infla.
-"Lleno, a",La mano se desliza sobre la mano contraria. La mejilla se infla.
+Lleno,La mano se desliza sobre la mano contraria. La mejilla se infla.
+LLena,La mano se desliza sobre la mano contraria. La mejilla se infla.
 Luego,El pulgar toca la palma de la mano contraria y gira hacia abajo.
 Mal,La mano se desliza hacia abajo. El ceño se frunce y la boca está cerrada con los labios hacia adentro.
 Mes,Los dedos forman una cruz y uno se desliza por el índice de la manos contraria.
-"Ministro, a",La mano se desplaza en curva sobre la palma de la mano contraria; luego la mano baja.
+Ministro,La mano se desplaza en curva sobre la palma de la mano contraria; luego la mano baja.
+Ministra,La mano se desplaza en curva sobre la palma de la mano contraria; luego la mano baja.
 Mujer,La mano coge la oreja. La boca está en forma de beso.
 Municipio,La mano toca el pecho dos veces.
 Necesitar,La mano se mueve varias veces de arriba hacia abajo. Se ven los dientes juntos.
 Necesidad,La mano se mueve varias veces de arriba hacia abajo. Se ven los dientes juntos.
 Niña,La mano toca el lóbulo y sin despegarse gira varias veces.
 Niño,"La mano, manteniéndose en contacto con la nariz, gira de arriba hacia abajo."
-"Nosotros, as","La mano toca el pecho, se separa en curva, gira y toca el otro lado del pecho."
+Nosotros,"La mano toca el pecho, se separa en curva, gira y toca el otro lado del pecho."
+Nosostras, "La mano toca el pecho, se separa en curva, gira y toca el otro lado del pecho."
 Nuestro,"La mano toca el pecho, se separa en curva, gira y toca el otro lado del pecho."
 Oportunidad,Las manos frente al pecho hacen las letras O y P y se desplazan levemente hacia delante. La boca está en forma de beso abierto.
 Oral,La mano forma círculos alrededor de la boca. La boca esta en forma de beso abierto.
@@ -101,15 +113,19 @@ Robar,"La muñeca gira mientras los dedos se recogen, la mano queda cerrada. La 
 Sexo,"El índice se desliza por el área del bigote, luego toca la oreja."
 Sindicato,La mano se mueve hacia delante dos veces.
 Solo,La mano gira en círculos.
-"Soltero, a",Las manos se mueven hacia delante en curva.
+Soltero,Las manos se mueven hacia delante en curva.
+Soltera, Las manos se mueven hacia delante en curva.
 Solucionar,Las manos se separan mientras se cierran. Los labios están en forma de beso abierto.
 Solución,Las manos se separan mientras se cierran. Los labios están en forma de beso abierto.
-"Sordo, a",El índice toca la oreja y luego la boca. La boca está cerrada con los labios hacia fuera.
+Sordo,El índice toca la oreja y luego la boca. La boca está cerrada con los labios hacia fuera.
+Sorda, El índice toca la oreja y luego la boca. La boca está cerrada con los labios hacia fuera.
 Supervisar,"La mano toca el rostro, luego se desplaza hacia adentro en cuerva."
-"Supervisor, a","La mano toca el rostro, luego se desplaza hacia adentro en cuerva."
+Supervisor,"La mano toca el rostro, luego se desplaza hacia adentro en cuerva."
+Supervisora, "La mano toca el rostro, luego se desplaza hacia adentro en cuerva."
 Taxi,La mano de arriba se desliza de adentro hacia fuera varias veces.
 Tener,La mano toca el hombro del mismo brazo dos veces.
-Tiempo/ Hora,El dedo toca dos veces la muñeca de la mano contraria.
+Tiempo,El dedo toca dos veces la muñeca de la mano contraria.
+Hora,El dedo toca dos veces la muñeca de la mano contraria.
 Tú,La mano se desplaza un poco hacia adelante.
 Universidad,La mano toca el hombro dos veces mientras sube en cuerva con movimientos cortos.
 Ustedes,La mano se desliza en curva de adentro hacia fuera.
