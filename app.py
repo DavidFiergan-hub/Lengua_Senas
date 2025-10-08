@@ -1,4 +1,4 @@
-"""Signify - Sistema de Consulta de Lengua de Señas
+"""Signify - Sistema de Tradución de Lengua de Señas
 
 Aplicación web profesional para traducción y aprendizaje de señas.
 Desarrollado con Streamlit para una interfaz moderna y accesible.
@@ -23,7 +23,7 @@ from database.signs_database import SignEntry, SignsDatabase
 # Constantes de configuración
 APP_TITLE = "Signify"
 APP_ICON = "🤟"
-APP_DESCRIPTION = "Sistema Profesional de Consulta de Lengua de Señas Ecuatoriano"
+APP_DESCRIPTION = "Sistema Profesional de Tradución de Lengua de Señas"
 
 # CSS Variables - Tema profesional optimizado
 CSS_VARIABLES = """
