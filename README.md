@@ -37,7 +37,7 @@
 
 ---
 
-## 🧪 Demo sugerida para Jurado (3–4 minutos)
+## 🧪 Explicación demo de funcionalidades clave
 1. **Búsqueda por voz**: decir “hola” → Whisper transcribe → aparece la seña.
 2. **Tolerancia a errores**: buscar “ola” → mostrar sugerencia “hola” (fuzzy matching).
 3. **Comparación entre países**: abrir vista paralela EC/CL/MX para una palabra frecuente.
