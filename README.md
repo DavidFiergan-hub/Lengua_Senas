@@ -38,13 +38,18 @@
 ---
 
 ## 🧪 Explicación demo de funcionalidades clave
-1. **Búsqueda por voz**: decir “hola” → Whisper transcribe → aparece la seña.
-2. **Tolerancia a errores**: buscar “ola” → mostrar sugerencia “hola” (fuzzy matching).
-3. **Comparación entre países**: abrir vista paralela EC/CL/MX para una palabra frecuente.
+1. **Búsqueda por voz**: decir "hola" → Whisper transcribe → aparece la seña.
+2. **Tolerancia a errores**: buscar "ola" → mostrar sugerencia "hola" (fuzzy matching).
+3. **Análisis Comparativo**: seleccionar una palabra → abrir vista paralela EC/CL/MX con análisis estadístico descriptivo completo:
+   - **Tabla resumen** con datos principales (mediana, percentiles, rango intercuartílico)
+   - **Tres gráficos ilustrativos** de distribución y complejidad
+   - **Conteo detallado** de señas comunes por idioma
+   - **Comparación exhaustiva** de niveles de complejidad entre países
+   - **Clasificación sistemática** usando métodos no paramétricos
 4. **Síntesis de voz**: activar lectura de instrucciones en español regional.
 5. **Métricas**: visitar el panel para evidenciar historial y velocidad de respuesta.
 
-> Consejo: mantén la demo en **un solo flujo** (voz → resultado → comparación → métricas) para conservar la atención.
+> Consejo: mantén la demo en **un solo flujo** (voz → resultado → análisis comparativo → métricas) para conservar la atención.
 
 ---
 
@@ -62,13 +67,19 @@
 - **Búsqueda Exacta** — coincidencia 1:1 por palabra.
 - **Búsqueda Inteligente (fuzzy)** — tolera errores tipográficos (Levenshtein/FuzzyWuzzy).
 - **Búsqueda por Voz** — Whisper AI para español con múltiples acentos.
+- **Análisis Comparativo** — análisis estadístico descriptivo con visualización paralela entre países (Ecuador, Chile, México):
+  - Tabla resumen con medidas de tendencia central y dispersión
+  - Gráficos ilustrativos de distribución y complejidad de instrucciones
+  - Conteo sistemático de señas comunes por idioma
+  - Comparación exhaustiva de niveles de complejidad usando métodos no paramétricos
+  - Clasificación sistemática basada en percentiles y rangos intercuartílicos
 - **Exploración Aleatoria** — descubre nuevas señas.
 - **Panel de Estadísticas** — métricas de uso, historial, tiempos y comparativos.
 - **Síntesis de Voz** — gTTS para leer instrucciones.
 
 ---
 
-## ⚙️ Instalación Express (60 segundos)
+## ⚙️ Instalación Express 
 ```bash
 # 1) Clona y entra al proyecto
 git clone https://github.com/tu-usuario/signify-lengua-senas.git
@@ -288,6 +299,9 @@ python -c "from audio.voice_recognition import test_microphone; test_microphone(
 
 ## 🤝 Contribuir
 ¡Las contribuciones son bienvenidas! Abre un **issue** o envía un **pull request**. Recomendado: pruebas unitarias, validación de datos y convenciones de estilo.
+
+### 💬 Únete a la Comunidad
+Participa en nuestro grupo de WhatsApp para discusiones, soporte y colaboración: [**Signify Community**](https://chat.whatsapp.com/KSRZ7K3L3KC4XFHRXq3Oez?mode=ems_copy_t)
 
 ---
 
