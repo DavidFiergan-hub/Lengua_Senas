@@ -204,6 +204,23 @@ Idiomas: Español con múltiples acentos
 - Vista paralela EC/CL/MX
 - Métricas de similitud y diferencias
 
+**Análisis Comparativo Detallado**
+```
+Flujo: Seleccionar palabra → Activar análisis → Visualización estadística
+Componentes:
+├── Tabla resumen (mediana, percentiles Q1/Q3, rango intercuartílico)
+├── Gráfico de distribución de complejidad por país
+├── Gráfico comparativo de longitud de instrucciones
+├── Histograma de frecuencias por categoría
+└── Clasificación sistemática (métodos no paramétricos)
+
+Métricas incluidas:
+• Complejidad promedio por variante
+• Análisis de dispersión estadística
+• Conteo de señas comunes/únicas
+• Comparación de niveles de dificultad
+```
+
 **Síntesis de voz**
 - Activación vía checkbox (panel lateral)
 - Lectura automática de instrucciones
@@ -214,7 +231,7 @@ Idiomas: Español con múltiples acentos
 - **Total de señas por variante**
 - **Búsquedas por sesión** e **historial reciente**
 - **Tiempos de respuesta** (búsqueda/voz/análisis)
-- **Comparativos** por país y categoría
+- **Análisis estadístico** por país y categoría (percentiles, medianas, dispersión)
 
 ---
 
