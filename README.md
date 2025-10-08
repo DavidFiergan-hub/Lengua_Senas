@@ -79,6 +79,38 @@
 
 ---
 
+## 📋 Prerrequisitos del Sistema
+
+### **Antes de clonar, asegúrate de tener:**
+- **Git** instalado y configurado:
+  ```bash
+  git --version  # Verificar instalación
+  git config --global user.name "Tu Nombre"
+  git config --global user.email "tu@email.com"
+  ```
+- **Python 3.8+** instalado:
+  ```bash
+  python --version  # Debe mostrar Python 3.8 o superior
+  ```
+- **pip** actualizado:
+  ```bash
+  python -m pip --version
+  ```
+
+### **Configuración de SSH (Recomendado)**
+```bash
+# Generar clave SSH si no tienes una
+ssh-keygen -t ed25519 -C "tu@email.com"
+
+# Agregar clave al agente SSH
+ssh-add ~/.ssh/id_ed25519
+
+# Copiar clave pública para GitHub
+cat ~/.ssh/id_ed25519.pub
+```
+
+---
+
 ## ⚙️ Instalación Express 
 ```bash
 # 1) Clona y entra al proyecto
@@ -87,10 +119,19 @@ cd signify-lengua-senas
 
 # 2) Crea y activa entorno virtual
 python -m venv .venv
-# Windows
-.venv\Scripts\activate
+
+# Activar entorno virtual:
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+# Windows (CMD)
+.venv\Scripts\activate.bat
 # macOS/Linux
 source .venv/bin/activate
+
+# Verificar activación (debe mostrar (.venv) al inicio del prompt)
+python --version
+which python  # macOS/Linux
+where python   # Windows
 
 # 3) Instala dependencias
 python -m pip install --upgrade pip
@@ -98,7 +139,29 @@ pip install -r requirements.txt
 
 # 4) Ejecuta
 streamlit run app.py
-# App en http://localhost:8501
+# App disponible en: http://localhost:8501
+```
+
+### 🚨 **Solución de Problemas Comunes**
+
+#### **Error de permisos en Windows:**
+```powershell
+# Habilitar ejecución de scripts
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+#### **Error "python no reconocido":**
+```bash
+# Usar py en lugar de python (Windows)
+py -m venv .venv
+py -m pip install --upgrade pip
+```
+
+#### **Error de módulo venv:**
+```bash
+# Instalar venv si no está disponible
+sudo apt-get install python3-venv  # Ubuntu/Debian
+brew install python3               # macOS
 ```
 
 ### Instalación mínima (dependencias esenciales)
