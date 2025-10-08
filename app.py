@@ -1,6 +1,6 @@
-"""Signify - Sistema de Consulta de Lengua de Señas Ecuatoriano
+"""Signify - Sistema de Consulta de Lengua de Señas
 
-Aplicación web profesional para consulta y aprendizaje de señas ecuatorianas.
+Aplicación web profesional para traducción y aprendizaje de señas.
 Desarrollado con Streamlit para una interfaz moderna y accesible.
 
 Autor: Signify Team
